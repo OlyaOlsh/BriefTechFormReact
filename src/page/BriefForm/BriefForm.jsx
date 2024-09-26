@@ -80,6 +80,9 @@ const BriefForm = () => {
         
         // Вы можете добавить сообщение об успехе здесь
     };
+    const handleFocus = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Прокручиваем страницу вверх при фокусе
+    };
 
     return (
         <form onSubmit={handleSubmit} className="relative flex-grow">
@@ -107,6 +110,7 @@ const BriefForm = () => {
                         ref={textareaGoalsRef} // Привязываем реф к textarea
                         value={formData.goals}
                         onChange={handleChange}
+                        onFocus={handleFocus} // Добавляем обработчик фокуса
                     ></textarea>
                     {errors.goals && <p className="text-red-500 text-sm">{errors.goals}</p>}
                 </div>
@@ -123,6 +127,7 @@ const BriefForm = () => {
                         ref={textareaAudienceRef} // Привязываем реф к textarea целевой аудитории
                         value={formData.audience}
                         onChange={handleChange}
+                        onFocus={handleFocus} // Добавляем обработчик фокуса
                     ></textarea>
 
                    {/*} <input type="text" id="audience" name="audience" placeholder="Определите основных пользователей" className={inputClasses} value={formData.audience} onChange={handleChange} />*/}
@@ -133,7 +138,7 @@ const BriefForm = () => {
                     <label htmlFor="fullname" className={labelClasses}>
                         Автор идеи
                     </label>
-                    <input type="text" id="fullname" name="fullname" placeholder="Укажите полное имя автора" className={inputClasses} value={formData.fullname} onChange={handleChange} />
+                    <input type="text" id="fullname" name="fullname" placeholder="Укажите полное имя автора" className={inputClasses} value={formData.fullname} onChange={handleChange}  onFocus={handleFocus}/>
                     {errors.fullname && <p className="text-red-500 text-sm font-MarvelSans">{errors.fullname}</p>}
                 </div>
 
