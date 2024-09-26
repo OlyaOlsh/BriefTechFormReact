@@ -1,0 +1,30 @@
+/* Home.css */
+.home-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2.5em;
+}
+
+p {
+    color: #34495e;
+    font-size: 1.2em;
+}
+
+.brief-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2980b9;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.brief-button:hover {
+    background-color: #3498db;
+}
