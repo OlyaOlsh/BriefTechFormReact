@@ -106,7 +106,11 @@ const BriefForm = () => {
                         )}
                     </div>
                 </div> */}
-                <button type="submit" disabled={isSubmitDisabled} className={`bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-md w-full transition duration-200 shadow-md ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                    <button 
+                    type="submit"
+                    disabled={isSubmitDisabled}
+                    className={`bg-blue-500 text-white hover:bg-blue-400 px-6 py-3 rounded-md w-full transition duration-200 shadow-md ${!isSubmitDisabled ? 'opacity-100' : 'opacity-50 cursor-not-allowed'}`}>
+
                     Отправить
                 </button>
             </div>
