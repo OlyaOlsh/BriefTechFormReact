@@ -10,12 +10,38 @@ const BriefForm = () => {
   const tg = window.Telegram.WebApp;
 
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+        const response = await fetch('http://localhost:8000/send-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+            alert('Данные успешно отправлены!');
+        } else {
+            alert('Ошибка при отправке данных.');
+        }
+    } catch (error) {
+        console.error('Ошибка:', error);
+    }
+};
+
+
   return (
+    <form onSubmit={handleSubmit}>
     <div className={containerClasses}>
       <span className ={'username'}>{tg.inititDataUnsafe?.user?.userName}</span>
       <img src="https://placehold.co/150.png?text=Logo" alt="Company Logo" className="mx-auto mb-6" />
       <h2 className="text-3xl font-bold text-center mb-6 text-accent">Бриф на разработку в MS Dynamics AX</h2>
-      <form>
+ 
         <div className="mb-6">
           <label htmlFor="project-name" className={labelClasses}>
             Название проекта
@@ -49,8 +75,8 @@ const BriefForm = () => {
         <button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/80 px-6 py-3 rounded-md w-full transition duration-200 shadow-md">
           Отправить
         </button>
-      </form>
     </div>
+    </form>
 
   )
 };
