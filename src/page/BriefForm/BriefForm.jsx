@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './BriefForm.css';
 
-const inputClasses = 'w-full px-4 py-3 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition duration-200 font-MarvelSans-Regular';
-const containerClasses = 'bg-background text-primary-foreground p-8 rounded-lg shadow-lg max-w-lg mx-auto min-h-screen flex flex-col justify-between font-MarvelSans-Regular';
-const labelClasses = 'block text-sm font-medium mb-1 text-secondary font-MarvelSans-Regular label-custom';
+const inputClasses = 'w-full px-4 py-2 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition duration-200 font-MarvelSans-Regular';
+const containerClasses = 'bg-background text-primary-foreground p-6 rounded-lg shadow-lg max-w-lg mx-auto min-h-screen flex flex-col justify-between font-MarvelSans-Regular';
+const labelClasses = 'block text-sm font-medium mb-0.1 text-secondary font-MarvelSans-Regular label-custom';
 
 const BriefForm = () => {
     const tg = window.Telegram.WebApp;
@@ -89,7 +89,7 @@ const BriefForm = () => {
         <form onSubmit={handleSubmit} className="relative flex-grow">
             <div className={containerClasses}>
                 <span className={'username'}>{tg.initDataUnsafe?.user?.userName}</span>
-                <h2 className="custom-header text-3xl font-bold">Идея по улучшению и оптимизации работы для Вас и Ваших коллег</h2>
+                <h2 className="custom-header text-3xl font-bold">А это Идея!</h2>
 
                 <div className="mb-6">
                     <label htmlFor="project-name" className={labelClasses}>
