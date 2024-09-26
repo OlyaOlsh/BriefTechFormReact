@@ -18,7 +18,7 @@ const BriefForm = () => {
     try {
 
       {/*}  const response = await fetch('http://localhost:8000/send-form', {*/}
-      const response = await fetch('https://brief-tech-form-react.vercel.app', {
+      const response = await fetch('https://brief-tech-form-react.vercel.app/briefform', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
