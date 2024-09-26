@@ -36,7 +36,7 @@ const BriefForm = () => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="relative">
     <div className={containerClasses}>
       <span className ={'username'}>{tg.inititDataUnsafe?.user?.userName}</span>
       <img src="https://placehold.co/150.png?text=Logo" alt="Company Logo" className="mx-auto mb-6" />
@@ -72,7 +72,7 @@ const BriefForm = () => {
           </label>
           <input type="text" id="fullname" name="fullname" placeholder="Введите Ваше ФИО" className={inputClasses} />
         </div>
-        <button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/80 px-6 py-3 rounded-md w-full transition duration-200 shadow-md">
+        <button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/80 px-6 py-3 rounded-md w-full transition duration-200 shadow-md fixed bottom-4 left-1/2 transform -translate-x-1/2">
           Отправить
         </button>
     </div>
