@@ -2,9 +2,9 @@ import React from 'react';
 import './BriefForm.css';
 
 
-const inputClasses = 'w-full px-4 py-3 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition duration-200'
-const containerClasses = 'bg-background text-primary-foreground p-8 rounded-lg shadow-lg max-w-lg mx-auto'
-const labelClasses = 'block text-sm font-medium mb-1 text-secondary'
+const inputClasses = 'w-full px-4 py-3 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition duration-200';
+const containerClasses = 'bg-background text-primary-foreground p-8 rounded-lg shadow-lg max-w-lg mx-auto min-h-screen'; // Добавлено min-h-screen
+const labelClasses = 'block text-sm font-medium mb-1 text-secondary';
 
 const BriefForm = () => {
   const tg = window.Telegram.WebApp;
@@ -16,7 +16,9 @@ const BriefForm = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-        const response = await fetch('http://localhost:8000/send-form', {
+
+      {/*}  const response = await fetch('http://localhost:8000/send-form', {*/}
+      const response = await fetch('https://brief-tech-form-react.vercel.app/send-form', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +41,7 @@ const BriefForm = () => {
     <form onSubmit={handleSubmit} className="relative">
     <div className={containerClasses}>
       <span className ={'username'}>{tg.inititDataUnsafe?.user?.userName}</span>
-      <img src="https://placehold.co/150.png?text=Logo" alt="Company Logo" className="mx-auto mb-6" />
+      {/*<img src="https://placehold.co/150.png?text=Logo" alt="Company Logo" className="mx-auto mb-6" />*/}
       <h2 className="text-3xl font-bold text-center mb-6 text-accent">Бриф на разработку в MS Dynamics AX</h2>
  
         <div className="mb-6">
@@ -72,7 +74,7 @@ const BriefForm = () => {
           </label>
           <input type="text" id="fullname" name="fullname" placeholder="Введите Ваше ФИО" className={inputClasses} />
         </div>
-        <button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/80 px-6 py-3 rounded-md w-full transition duration-200 shadow-md fixed bottom-4 left-1/2 transform -translate-x-1/2">
+        <button type="submit" className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-md w-full transition duration-200 shadow-md fixed bottom-4 left-1/2 transform -translate-x-1/2">
           Отправить
         </button>
     </div>
