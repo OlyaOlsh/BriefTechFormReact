@@ -81,14 +81,15 @@ const BriefForm = () => {
         // Вы можете добавить сообщение об успехе здесь
     };
     const handleFocus = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Прокручиваем страницу вверх при фокусе
+       // window.scrollTo({ top: 0, behavior: 'smooth' }); // Прокручиваем страницу вверх при фокусе
+        window.scrollTo({ top: window.scrollY - 200, behavior: 'smooth' });
     };
 
     return (
         <form onSubmit={handleSubmit} className="relative flex-grow">
             <div className={containerClasses}>
                 <span className={'username'}>{tg.initDataUnsafe?.user?.userName}</span>
-                <h2 className="custom-header text-3xl font-bold">Идея в MS Dynamics AX</h2>
+                <h2 className="custom-header text-3xl font-bold">Идея по улучшению и оптимизации работы для Вас и Ваших коллег</h2>
 
                 <div className="mb-6">
                     <label htmlFor="project-name" className={labelClasses}>

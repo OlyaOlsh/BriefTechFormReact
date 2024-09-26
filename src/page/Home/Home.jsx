@@ -1,9 +1,12 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Home.css';
 
 
 const Home = () => {
+    useEffect(() => {
+        // Прокручиваем страницу вверх при открытии компонента
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []); // Пустой массив зависимостей означает, что этот эффект выполнится только один раз при монтировании
     return (
         <div className="home-container">
         <h1>Ваши идеи — это ключ к преобразованиям!</h1>
