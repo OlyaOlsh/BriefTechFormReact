@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './BriefForm.css';
 
 const inputClasses = 'w-full px-4 py-3 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition duration-200';
-const containerClasses = 'bg-background text-primary-foreground p-8 rounded-lg shadow-lg max-w-lg mx-auto min-h-screen';
+const containerClasses = 'bg-background text-primary-foreground p-8 rounded-lg shadow-lg max-w-lg mx-auto min-h-screen flex flex-col justify-between';
 const labelClasses = 'block text-sm font-medium mb-1 text-secondary';
 
 const BriefForm = () => {
@@ -39,7 +39,7 @@ const BriefForm = () => {
         dataToSend.append('projectName', formData.projectName);
         dataToSend.append('goals', formData.goals);
         dataToSend.append('audience', formData.audience);
-
+        dataToSend.append('fullname', formData.fullname);
 
         tg.sendData(JSON.stringify({
             projectName: formData.projectName,
@@ -60,7 +60,7 @@ const BriefForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="relative">
+        <form onSubmit={handleSubmit} className="relative flex-grow">
             <div className={containerClasses}>
                 <span className={'username'}>{tg.initDataUnsafe?.user?.userName}</span>
                 <h2 className="text-3xl font-bold text-center mb-6 text-accent">Идея в MS Dynamics AX</h2>
@@ -69,7 +69,7 @@ const BriefForm = () => {
                     <label htmlFor="project-name" className={labelClasses}>
                         Название проекта
                     </label>
-                    <input type="text" id="project-name" name="projectName" placeholder="Укажите краткое и точное название" className={inputClasses} value={formData.projectName} onChange={handleChange} />
+                    <input type="text" id="project-name" name="projectName" placeholder="Укажите краткое название" className={inputClasses} value={formData.projectName} onChange={handleChange} />
                 </div>
                 <div className="mb-6">
                     <label htmlFor="goals" className={labelClasses}>
