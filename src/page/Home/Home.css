@@ -1,30 +1,63 @@
 /* Home.css */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    font-family: 'Roboto', sans-serif; /* Вы можете заменить на любой другой шрифт */
+    background-color: #f4f4f9; /* Светлый фон */
+    color: #333; /* Темный текст */
+    line-height: 1.6;
+}
+
 .home-container {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Минимальная высота экрана */
     padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
+    text-align: center;
 }
 
 h1 {
-    color: #2c3e50;
-    font-size: 2.5em;
+    font-size: 2.5rem; /* Размер заголовка */
+    margin-bottom: 20px;
+    color: #4a90e2; /* Цвет заголовка */
 }
 
 p {
-    color: #34495e;
-    font-size: 1.2em;
+    font-size: 1.2rem; /* Размер текста */
+    margin-bottom: 15px;
 }
 
 .brief-button {
     display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #2980b9;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+    background-color: #4a90e2; /* Цвет кнопки */
+    color: white; /* Цвет текста кнопки */
+    padding: 15px 30px; /* Отступы кнопки */
+    border-radius: 5px; /* Закругленные углы */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-size: 1.2rem; /* Размер текста кнопки */
+    transition: background-color 0.3s ease; /* Плавный переход цвета */
 }
+
 .brief-button:hover {
-    background-color: #3498db;
+    background-color: #357ab8; /* Цвет кнопки при наведении */
+}
+
+/* Фиксированное позиционирование кнопки на мобильных устройствах */
+@media (max-width: 768px) {
+    .brief-button {
+        position: fixed;
+        bottom: 20px; /* Отступ от низа экрана */
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 40px); /* Ширина кнопки с учетом отступов */
+        max-width: 400px; /* Максимальная ширина кнопки */
+    }
 }
