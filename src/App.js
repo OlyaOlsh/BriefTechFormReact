@@ -12,7 +12,6 @@ function App() {
 
   return (
     <div className="App">
-          <div>привет</div> 
           <Routes>
           <Route path ="/" element = {<Home/>}/>
           <Route path ="/briefform" element = {<BriefForm/>}/>
