@@ -13,7 +13,7 @@ const BriefForm = () => {
         goals: '',
         audience: '',
         fullname: '',
-        additionalMaterials: null,
+       /* additionalMaterials: null,*/
     });
 
     const handleChange = (event) => {
@@ -39,18 +39,14 @@ const BriefForm = () => {
         dataToSend.append('projectName', formData.projectName);
         dataToSend.append('goals', formData.goals);
         dataToSend.append('audience', formData.audience);
-        dataToSend.append('fullname', formData.fullname);
-        
-        if (formData.additionalMaterials) {
-            dataToSend.append('additionalMaterials', formData.additionalMaterials);
-        }
+
 
         tg.sendData(JSON.stringify({
             projectName: formData.projectName,
             goals: formData.goals,
             audience: formData.audience,
             fullname: formData.fullname,
-            additionalMaterials: formData.additionalMaterials ? formData.additionalMaterials.name : null,
+
         }));
 
         // Очищаем поля формы
@@ -59,7 +55,7 @@ const BriefForm = () => {
             goals: '',
             audience: '',
             fullname: '',
-            additionalMaterials: null,
+
         });
     };
 
@@ -67,7 +63,7 @@ const BriefForm = () => {
         <form onSubmit={handleSubmit} className="relative">
             <div className={containerClasses}>
                 <span className={'username'}>{tg.initDataUnsafe?.user?.userName}</span>
-                <h2 className="text-3xl font-bold text-center mb-6 text-accent">Идея на разработку в MS Dynamics AX</h2>
+                <h2 className="text-3xl font-bold text-center mb-6 text-accent">Идея в MS Dynamics AX</h2>
 
                 <div className="mb-6">
                     <label htmlFor="project-name" className={labelClasses}>
@@ -91,9 +87,9 @@ const BriefForm = () => {
                     <label htmlFor="fullname" className={labelClasses}>
                         ФИО (для обратной связи)
                     </label>
-                    <input type="text" id="fullname" name="fullname" placeholder="Пожалуйста, укажите ФИО для дальнейшего общения" className={inputClasses} value={formData.fullname} onChange={handleChange} />
+                    <input type="text" id="fullname" name="fullname" placeholder="Пожалуйста, укажите ФИО" className={inputClasses} value={formData.fullname} onChange={handleChange} />
                 </div>
-                <div className="mb-6">
+               {/* <div className="mb-6">
                     <label htmlFor="additional-materials" className={labelClasses}>
                         Дополнительные материалы и ресурсы
                     </label>
@@ -102,14 +98,14 @@ const BriefForm = () => {
                         {formData.additionalMaterials && (
                             <div className="ml-4 flex items-center">
                                 <img src={URL.createObjectURL(formData.additionalMaterials)} alt="Дополнительные материалы" className="max-w-[100px] max-h-[100px] object-contain mr-2" />
-                                {/* Крестик для удаления файла */}
+                           
                                 <button type="button" onClick={handleFileRemove} className="text-red-500 hover:text-red-600">
                                     &times;
                                 </button>
                             </div>
                         )}
                     </div>
-                </div>
+                </div> */}
                 <button type="submit" disabled={isSubmitDisabled} className={`bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-md w-full transition duration-200 shadow-md ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}>
                     Отправить
                 </button>
