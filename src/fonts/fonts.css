@@ -1,0 +1,7 @@
+
+@font-face {
+  font-family: 'MarvelSans-Regular';
+  src: local('MarvelSans-Regular'), url('./MarvelSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

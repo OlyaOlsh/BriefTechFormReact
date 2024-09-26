@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './../../fonts/fonts.css';
+
+.custom-button {
+    background-color: #0A1A5C; /* Зеленый цвет фона */
+    color: #EEEEF0 ; /* Белый цвет текста */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Шрифт кнопки */
+    padding: 12px 24px; /* Отступы внутри кнопки */
+    border: none; /* Убираем границу */
+    border-radius: 4px; /* Скругленные углы */
+    cursor: pointer; /* Курсор в виде указателя при наведении */
+    font-size: 16px; /* Размер шрифта */
+    transition: background-color 0.3s ease; /* Анимация при наведении */
+  }
+  
+  .custom-button:hover {
+    background-color: #409BFF; /* Более темный оттенок зеленого при наведении */
+  }
+  
+  .custom-button:disabled {
+    background-color:  #78C946; /* Серый цвет фона для неактивной кнопки */
+    color:  #EEEEF0; /* Серый цвет текста для неактивной кнопки */
+    cursor: not-allowed; /* Курсор в виде запрещающего знака для неактивной кнопки */
+  }
+
+.custom-header {
+    font-family: 'MarvelSans-Regular', sans-serif; /* Укажите ваш шрифт */
+    color:  #409BFF; /* Задайте нужный цвет */
+    text-align: center; /* Выравнивание по центру */
+    margin-bottom: 24px; /* Отступ снизу */
+    font-size: 28px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #5c545cb5; /* Задайте нужный цвет для placeholder */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Укажите ваш шрифт */
+}
+.label-custom {
+    color: #0A1A5C; /* Задайте нужный цвет текста */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Укажите ваш шрифт */
+}
+

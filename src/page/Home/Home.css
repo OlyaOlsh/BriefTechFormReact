@@ -1,5 +1,5 @@
 /* Home.css */
-
+@import './../../fonts/fonts.css';
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,8 +8,8 @@
 
 body {
 
-    font-family: 'Roboto', sans-serif; /* Вы можете заменить на любой другой шрифт */
-    background-color: #f4f4f9; /* Светлый фон */
+    font-family: 'MarvelSans-BoldExtended', sans-serif; /* Вы можете заменить на любой другой шрифт */
+    background-color: #EEEEF0; /* Светлый фон */
     color: #333; /* Темный текст */
     line-height: 1.6;
 }
@@ -25,9 +25,9 @@ body {
 }
 
 h1 {
-    font-size: 2.5rem; /* Размер заголовка */
+    font-size: 2.0rem; /* Размер заголовка */
     margin-bottom: 20px;
-    color: #4a90e2; /* Цвет заголовка */
+    color: #409BFF; /* Цвет заголовка */
 }
 
 p {
@@ -37,7 +37,7 @@ p {
 
 .brief-button {
     display: inline-block;
-    background-color: #4a90e2; /* Цвет кнопки */
+    background-color: #0A1A5C; /* Цвет кнопки */
     color: white; /* Цвет текста кнопки */
     padding: 15px 30px; /* Отступы кнопки */
     border-radius: 5px; /* Закругленные углы */
@@ -47,7 +47,7 @@ p {
 }
 
 .brief-button:hover {
-    background-color: #357ab8; /* Цвет кнопки при наведении */
+    background-color: #409BFF; /* Цвет кнопки при наведении */
 }
 
 /* Фиксированное позиционирование кнопки на мобильных устройствах */
