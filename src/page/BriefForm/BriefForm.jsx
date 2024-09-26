@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './BriefForm.css';
 
+
 const inputClasses = 'w-full px-4 py-3 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition duration-200';
 const containerClasses = 'bg-background text-primary-foreground p-8 rounded-lg shadow-lg max-w-lg mx-auto min-h-screen flex flex-col justify-between';
 const labelClasses = 'block text-sm font-medium mb-1 text-secondary';
