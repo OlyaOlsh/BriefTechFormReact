@@ -16,11 +16,9 @@ const BriefForm = () => {
     
     const [errors, setErrors] = useState({});
 
-
     const textareaAudienceRef = useRef(null); // Реф для textarea целевой аудитории
     const textareaGoalsRef = useRef(null); // Реф для textarea целей
 
-    
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -28,27 +26,30 @@ const BriefForm = () => {
 
         // Изменяем высоту textarea
         if (event.target.name === 'goals' && textareaGoalsRef.current) {
-            textareaGoalsRef.current.style.height = 'auto'; // Сбрасываем высоту
-            textareaGoalsRef.current.style.height = `${textareaGoalsRef.current.scrollHeight}px`; // Устанавливаем новую высоту
+            autoGrow(textareaGoalsRef.current);
         } else if (event.target.name === 'audience' && textareaAudienceRef.current) {
-            textareaAudienceRef.current.style.height = 'auto'; // Сбрасываем высоту
-            textareaAudienceRef.current.style.height = `${textareaAudienceRef.current.scrollHeight}px`; // Устанавливаем новую высоту
+            autoGrow(textareaAudienceRef.current);
         }
     };
 
+    // Функция для динамического изменения высоты
+    const autoGrow = (el) => {
+        el.style.height = 'auto'; // Сбрасываем высоту
+        el.style.height = `${el.scrollHeight}px`; // Устанавливаем новую высоту
+    };
 
-      // Устанавливаем начальную высоту при монтировании компонента
-      useEffect(() => {
+    // Устанавливаем начальную высоту при монтировании компонента
+    useEffect(() => {
         if (textareaGoalsRef.current) {
             textareaGoalsRef.current.style.height = '160px'; // Установите желаемую начальную высоту для целей
+            autoGrow(textareaGoalsRef.current); // Применяем функцию авто-роста
         }
         if (textareaAudienceRef.current) {
             textareaAudienceRef.current.style.height = '160px'; // Установите желаемую начальную высоту для целевой аудитории
+            autoGrow(textareaAudienceRef.current); // Применяем функцию авто-роста
         }
     }, []);
-  
 
-    
     const validateForm = () => {
         const newErrors = {};
         if (!formData.projectName) newErrors.projectName = "Название проекта обязательно.";
@@ -80,9 +81,9 @@ const BriefForm = () => {
         
         // Вы можете добавить сообщение об успехе здесь
     };
+
     const handleFocus = () => {
-       // window.scrollTo({ top: 0, behavior: 'smooth' }); // Прокручиваем страницу вверх при фокусе
-        window.scrollTo({ top: window.scrollY - 300, behavior: 'smooth' });
+       window.scrollTo({ top: window.scrollY - 300, behavior: 'smooth' }); // Прокручиваем страницу вверх при фокусе
     };
 
     return (
@@ -171,5 +172,6 @@ const BriefForm = () => {
             </div>
         </form>
     );
-}
+};
+
 export default BriefForm;
