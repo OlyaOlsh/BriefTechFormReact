@@ -98,6 +98,14 @@ const BriefForm = () => {
                 audience: formData.audience,
                 fullname: formData.fullname,
                 });
+
+                // Отправка данных в Telegram
+            tg.sendData(JSON.stringify({
+                projectName: formData.projectName,
+                goals: formData.goals,
+                audience: formData.audience,
+                fullname: formData.fullname,
+            }));
             
                 // Очищаем поля формы
                 setFormData({
@@ -115,7 +123,7 @@ const BriefForm = () => {
 
                 // Возвращаем текст кнопки через некоторое время (например, 3 секунды)
                 setTimeout(() => {
-                    setButtonText('Отправить');
+                    setButtonText('Отправить еще');
                 }, 3000);
 
             } catch (error) {
@@ -207,7 +215,7 @@ const BriefForm = () => {
                     type="submit"
                     disabled={!formData.goals || !formData.fullname}
                     className={`custom-button ${!formData.goals || !formData.fullname ? 'opacity-50' : ''}`}>
-                    Отправить
+                    {buttonText}
                 </button>
             </div>
         </form>
