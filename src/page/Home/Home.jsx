@@ -13,14 +13,14 @@ const Home = () => {
         window.addEventListener('touchmove', preventScroll, { passive: false });
 
         // Прокручиваем страницу вверх при открытии компонента
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 500, behavior: 'smooth' });
 
         // Удаляем обработчик при размонтировании компонента
         return () => {
             window.removeEventListener('touchmove', preventScroll);
         };
     }, []);
-    
+
     return (
         <div className="fullscreen-container_idea">
             <div className="image-container_idea">
