@@ -4,6 +4,9 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
+    
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
+    font-size: 16px; /* Размер шрифта */
 }
 
 .idea-card {
@@ -14,6 +17,9 @@
     padding: 20px;
     width: 300px; /* Ширина карточки */
     transition: transform 0.2s;
+
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
+    font-size: 16px; /* Размер шрифта */
 }
 
 .idea-card:hover {
@@ -50,6 +56,7 @@
     color: #555; /* Цвет текста для количества голосов */
 }
 .share-button {
+    width: 100%; /* Занимает всю ширину */
     background-color: #0A1A5C; /* Зеленый цвет */
     color: white; /* Белый текст */
     padding: 10px 20px; /* Отступы */
@@ -57,6 +64,8 @@
     border-radius: 5px; /* Закругленные углы */
     cursor: pointer; /* Указатель при наведении */
     margin-top: 20px; /* Отступ сверху */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
+    font-size: 16px; /* Размер шрифта */
 }
 
 .share-button:hover {
