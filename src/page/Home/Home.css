@@ -6,37 +6,30 @@
     padding: 0;
 }
 
-body {
-
-    font-family: 'MarvelSans-BoldExtended', sans-serif; /* Вы можете заменить на любой другой шрифт */
-    background-color: #EEEEF0; /* Светлый фон */
-    color: #333; /* Темный текст */
-    line-height: 1.6;
-}
-
-html, body {
-    height: 100%; /* Устанавливаем высоту для html и body */
-    margin: 0; /* Убираем отступы */
-    overflow: hidden; /* Запрещаем прокрутку страницы */
-}
-
 .fullscreen-container {
     height: 100vh; /* Занимает всю высоту экрана */
     display: flex;
     flex-direction: column; /* Вертикальное расположение элементов */
 }
 
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Установите желаемую высоту блока */
+    background-color: #f0f0f0; /* Фоновый цвет блока */
+    margin-bottom: 10px; /* Уменьшите отступ снизу для разделения от home-container */
+}
 
 .home-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Минимальная высота экрана */
+    min-height: calc(100vh - 210px); /* Вычитаем высоту image-container и отступ */
     padding: 10px;
     text-align: center;
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
-    margin-bottom: 10px; 
 }
 
 h1 {
@@ -51,6 +44,7 @@ p {
     margin-bottom: 15px;
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
 }
+
 
 .brief-button:hover {
     background-color: #409BFF; /* Цвет кнопки при наведении */
@@ -70,16 +64,16 @@ p {
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
 }
 
-/*.brief-button::before {
+.brief-button::before {
     content: '';
     position: absolute;
     top: -100%; /* Начальное положение выше кнопки */
-   /* left: -100%; /* Начальное положение слева от кнопки */
-   /* width: 300%; /* Ширина анимации больше кнопки */
-   /* height: 300%; /* Высота анимации больше кнопки */
-   /* background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)); /* Полупрозрачный градиент */
-   /* animation: ripple 1.5s infinite; /* Анимация */
-/*}*/
+    left: -100%; /* Начальное положение слева от кнопки */
+    width: 300%; /* Ширина анимации больше кнопки */
+    height: 300%; /* Высота анимации больше кнопки */
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)); /* Полупрозрачный градиент */
+    animation: ripple 1.5s infinite; /* Анимация */
+}
 
 @keyframes ripple {
     to {
