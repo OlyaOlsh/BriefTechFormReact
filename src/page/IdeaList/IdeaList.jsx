@@ -55,7 +55,6 @@ const IdeaList = () => {
             navigator.share({
                 url: shareUrl,
                 title: 'Поделитесь этой идеей!',
-                image: shareImage,
               
             })
             .then(() => console.log('Успешно поделились!'))
