@@ -90,15 +90,60 @@ const BriefForm = () => {
             <div className={containerClasses}>
                 <span className={'username'}>{tg.initDataUnsafe?.user?.userName}</span>
                 <h2 className="custom-header text-3xl font-bold">А это Идея!</h2>
-
+    
+                {/* Поле: Название проекта */}
                 <div className="mb-2">
                     <label htmlFor="project-name" className={labelClasses}>
                         Название проекта
                     </label>
-                    <input type="text" id="project-name" name="projectName" placeholder="Укажите краткое название" className={inputClasses} value={formData.projectName} onChange={handleChange} />
+                    <input 
+                        type="text" 
+                        id="project-name" 
+                        name="projectName" 
+                        placeholder="Укажите краткое название" 
+                        className={inputClasses} 
+                        value={formData.projectName} 
+                        onChange={handleChange} 
+                    />
                     {errors.projectName && <p className="text-red-500 text-sm font-MarvelSans">{errors.projectName}</p>}
                 </div>
                 
+                {/* Поле: Автор идеи */}
+                <div className="mb-2">
+                    <label htmlFor="fullname" className={labelClasses}>
+                        Автор идеи
+                    </label>
+                    <input 
+                        type="text" 
+                        id="fullname" 
+                        name="fullname" 
+                        placeholder="Укажите полное имя автора" 
+                        className={inputClasses} 
+                        value={formData.fullname} 
+                        onChange={handleChange}  
+                        onFocus={handleFocus}
+                    />
+                    {errors.fullname && <p className="text-red-500 text-sm font-MarvelSans">{errors.fullname}</p>}
+                </div>
+    
+                {/* Поле: Целевая аудитория */}
+                <div className="mb-2">
+                    <label htmlFor="audience" className={labelClasses}>
+                        Целевая аудитория
+                    </label>
+                    <textarea
+                        id="audience"
+                        name="audience"
+                        placeholder="Определите основных пользователей"
+                        className={`${inputClasses} h-auto resize-none overflow-y-hidden`} // Убираем фиксированную высоту
+                        ref={textareaAudienceRef} // Привязываем реф к textarea целевой аудитории
+                        value={formData.audience}
+                        onChange={handleChange}
+                        onFocus={handleFocus} // Добавляем обработчик фокуса
+                    ></textarea>
+                </div>
+    
+                {/* Поле: Цели и задачи */}
                 <div className="mb-2">
                     <label htmlFor="goals" className={labelClasses}>
                         Цели и задачи
@@ -115,36 +160,8 @@ const BriefForm = () => {
                     ></textarea>
                     {errors.goals && <p className="text-red-500 text-sm">{errors.goals}</p>}
                 </div>
-
-                <div className="mb-2">
-                    <label htmlFor="audience" className={labelClasses}>
-                        Целевая аудитория
-                    </label>
-                    <textarea
-                        id="audience"
-                        name="audience"
-                        placeholder="Определите основных пользователей"
-                        className={`${inputClasses} h-auto resize-none overflow-y-hidden`} // Убираем фиксированную высоту
-                        ref={textareaAudienceRef} // Привязываем реф к textarea целевой аудитории
-                        value={formData.audience}
-                        onChange={handleChange}
-                        onFocus={handleFocus} // Добавляем обработчик фокуса
-                    ></textarea>
-
-                   {/*} <input type="text" id="audience" name="audience" placeholder="Определите основных пользователей" className={inputClasses} value={formData.audience} onChange={handleChange} />*/}
-              
-                </div>
-
-                <div className="mb-2">
-                    <label htmlFor="fullname" className={labelClasses}>
-                        Автор идеи
-                    </label>
-                    <input type="text" id="fullname" name="fullname" placeholder="Укажите полное имя автора" className={inputClasses} value={formData.fullname} onChange={handleChange}  onFocus={handleFocus}/>
-                    {errors.fullname && <p className="text-red-500 text-sm font-MarvelSans">{errors.fullname}</p>}
-                </div>
-
+    
                 {/* Кнопка отправки */}
-
                 <button 
                     type="submit"
                     disabled={!formData.goals || !formData.fullname}
@@ -154,6 +171,5 @@ const BriefForm = () => {
             </div>
         </form>
     );
-};
-
+}
 export default BriefForm;
