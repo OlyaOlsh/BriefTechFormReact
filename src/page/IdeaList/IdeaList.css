@@ -28,6 +28,7 @@
 
 .idea-card h3 {
     margin-top: 0;
+    font-size: 20px; /* Размер шрифта */
 }
 
 .idea-card p {
@@ -71,4 +72,18 @@
 
 .share-button:hover {
     background-color:  #78C946; /* Более темный зеленый при наведении */
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Установите желаемую высоту блока */
+    background-color: #f0f0f0; /* Фоновый цвет блока */
+    margin-bottom: 20px; /* Отступ снизу для разделения от списка идей */
+}
+
+.image {
+    max-width: 100%; /* Ограничение ширины изображения до 100% блока */
+    max-height: 100%; /* Ограничение высоты изображения до 100% блока */
+    object-fit: contain; /* Масштабирование изображения с сохранением пропорций */
 }

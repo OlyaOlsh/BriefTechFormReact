@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { db } from './../../../src/firebase.js';
 import { collection, getDocs, doc, updateDoc, getDoc } from 'firebase/firestore';
 import './IdeaList.css'; // Импортируйте стили
-
+import imageUrl from './../../img/imgforLink.jpg';
 
 const IdeaList = () => {
     const tg = window.Telegram?.WebApp;
@@ -102,13 +102,16 @@ const IdeaList = () => {
 
     return (
         <div>
+            <div className="image-container">
+            <img src={imageUrl} alt="Идея" className="image" />
+           </div>
             <div className="idea-list">
                 {ideas.length === 0 ? (
                     <p>Нет идей для отображения.</p>
                 ) : (
                     ideas.map(idea => (
                         <div key={idea.id} className="idea-card">
-                            <h3>Проект: {idea.projectName}</h3>
+                            <h3><strong>Проект: {idea.projectName}</strong></h3>
                             <p><strong>Автор:</strong> {idea.fullname}</p>
                             <p><strong>Цели:</strong> {idea.goals}</p>
                             <p><strong>Для кого:</strong> {idea.audience}</p>
