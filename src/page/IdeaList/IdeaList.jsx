@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { db } from './../../../src/firebase.js';
 import { collection, getDocs, doc, updateDoc, getDoc } from 'firebase/firestore';
 import './IdeaList.css'; // Импортируйте стили
-import {imgLogo} from './../../img/imgfoLink.jpg';
+import imgLogo from './../../img/imgforLink.jpg';
 
 const IdeaList = () => {
     const tg = window.Telegram?.WebApp;
