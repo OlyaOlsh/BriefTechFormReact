@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './Home.css';
-import imageUrl from './../../img/imgforLinkIdeas.jpg';
+import imageUrl from './../../img/imgforLinkIdeas.png';
 
 const Home = () => {
 

@@ -13,6 +13,7 @@ html, body {
     height: 100%; /* Устанавливаем высоту для html и body */
     overflow: hidden; /* Запрещаем прокрутку страницы */
     margin: 0; /* Убираем отступы */
+    background-color: #EEEEF0; /* Фоновый цвет блока */
 }
 
 
@@ -25,6 +26,8 @@ html, body {
     background-color: #EEEEF0; /* Фоновый цвет блока */
     margin-bottom: 10px; /* Отступ снизу для разделения от списка идей */
     margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px; /* Установите радиус скругления по вашему выбору */
 }
 
 .image_idea {
@@ -51,7 +54,7 @@ html, body {
     padding: 10px; /* Стандартные отступы */
     text-align: center; /* Центрирование текста */
     overflow-y: auto; /* Прокрутка, если текст превышает высоту контейнера */
-    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
+    padding: 10px 15px; 
 }
 
 /* Стили для заголовка h1 */
@@ -85,7 +88,9 @@ p {
     border-radius: 5px; /* Закругленные углы кнопки */
     text-decoration: none; /* Убираем подчеркивание текста кнопки */
     cursor: pointer; /* Указатель при наведении на кнопку */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
 }
+
 
 @media (max-width: 768px) {
     .brief-button_idea {
