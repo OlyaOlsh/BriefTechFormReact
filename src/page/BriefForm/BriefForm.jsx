@@ -3,7 +3,7 @@ import './BriefForm.css';
 
 const inputClasses = 'w-full px-4 py-2 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition duration-200 font-MarvelSans-Regular';
 const containerClasses = 'bg-background text-primary-foreground p-6 rounded-lg shadow-lg max-w-lg mx-auto min-h-screen flex flex-col justify-between font-MarvelSans-Regular';
-const labelClasses = 'block text-sm font-medium mb-0.1 text-secondary font-MarvelSans-Regular label-custom';
+const labelClasses = 'block text-sm font-medium mb-0.5 text-secondary font-MarvelSans-Regular label-custom';
 
 const BriefForm = () => {
     const tg = window.Telegram.WebApp;
@@ -82,7 +82,7 @@ const BriefForm = () => {
     };
     const handleFocus = () => {
        // window.scrollTo({ top: 0, behavior: 'smooth' }); // Прокручиваем страницу вверх при фокусе
-        window.scrollTo({ top: window.scrollY - 200, behavior: 'smooth' });
+        window.scrollTo({ top: window.scrollY - 250, behavior: 'smooth' });
     };
 
     return (
@@ -91,7 +91,7 @@ const BriefForm = () => {
                 <span className={'username'}>{tg.initDataUnsafe?.user?.userName}</span>
                 <h2 className="custom-header text-3xl font-bold">А это Идея!</h2>
 
-                <div className="mb-6">
+                <div className="mb-4">
                     <label htmlFor="project-name" className={labelClasses}>
                         Название проекта
                     </label>
@@ -99,7 +99,7 @@ const BriefForm = () => {
                     {errors.projectName && <p className="text-red-500 text-sm font-MarvelSans">{errors.projectName}</p>}
                 </div>
                 
-                <div className="mb-6">
+                <div className="mb-4">
                     <label htmlFor="goals" className={labelClasses}>
                         Цели и задачи
                     </label>
@@ -116,7 +116,7 @@ const BriefForm = () => {
                     {errors.goals && <p className="text-red-500 text-sm">{errors.goals}</p>}
                 </div>
 
-                <div className="mb-6">
+                <div className="mb-4">
                     <label htmlFor="audience" className={labelClasses}>
                         Целевая аудитория
                     </label>
@@ -135,7 +135,7 @@ const BriefForm = () => {
               
                 </div>
 
-                <div className="mb-6">
+                <div className="mb-4">
                     <label htmlFor="fullname" className={labelClasses}>
                         Автор идеи
                     </label>
@@ -151,12 +151,6 @@ const BriefForm = () => {
                     className={`custom-button ${!formData.goals || !formData.fullname ? 'opacity-50' : ''}`}>
                     Отправить
                 </button>
-            {/*   <button 
-                    type="submit"
-                    disabled={!formData.goals || !formData.fullname}
-                    className={`bg-blue-500 text-white hover:bg-blue-400 px-6 py-3 rounded-md w-full transition duration-200 shadow-md  ${!formData.goals || !formData.fullname ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}>
-                    Отправить
-                </button> */}
             </div>
         </form>
     );

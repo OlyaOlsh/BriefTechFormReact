@@ -5,7 +5,7 @@ import './Home.css';
 const Home = () => {
     useEffect(() => {
         // Прокручиваем страницу вверх при открытии компонента
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 200, behavior: 'smooth' });
     }, []); // Пустой массив зависимостей означает, что этот эффект выполнится только один раз при монтировании
     return (
         <div className="home-container">
