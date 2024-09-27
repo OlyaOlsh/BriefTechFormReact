@@ -3,10 +3,25 @@ import './Home.css';
 import imageUrl from './../../img/imgforLinkIdeas.jpg';
 
 const Home = () => {
+
     useEffect(() => {
+        const preventScroll = (e) => {
+            e.preventDefault(); // Предотвращаем стандартное поведение прокрутки
+        };
+
+        // Добавляем обработчик событий
+        window.addEventListener('touchmove', preventScroll, { passive: false });
+
+        // Удаляем обработчик при размонтировании компонента
+        return () => {
+            window.removeEventListener('touchmove', preventScroll);
+        };
+    }, []);
+
+   {/* useEffect(() => {
         // Прокручиваем страницу вверх при открытии компонента
         window.scrollTo({ top: 200, behavior: 'smooth' });
-    }, []); // Пустой массив зависимостей означает, что этот эффект выполнится только один раз при монтировании
+    }, []); // Пустой массив зависимостей означает, что этот эффект выполнится только один раз при монтировании */}
     return (
         <div className="fullscreen-container">
         <div className="image-container">
