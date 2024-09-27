@@ -93,7 +93,7 @@ const BriefForm = () => {
                 <h2 className="custom-header text-3xl font-bold">А это Идея!</h2>
     
                 {/* Поле: Название проекта */}
-                <div className="mb-2">
+                <div className="mb-1">
                     <label htmlFor="project-name" className={labelClasses}>
                         Название проекта
                     </label>
@@ -108,44 +108,9 @@ const BriefForm = () => {
                     />
                     {errors.projectName && <p className="text-red-500 text-sm font-MarvelSans">{errors.projectName}</p>}
                 </div>
-                
-                {/* Поле: Автор идеи */}
-                <div className="mb-2">
-                    <label htmlFor="fullname" className={labelClasses}>
-                        Автор идеи
-                    </label>
-                    <input 
-                        type="text" 
-                        id="fullname" 
-                        name="fullname" 
-                        placeholder="Укажите полное имя автора" 
-                        className={inputClasses} 
-                        value={formData.fullname} 
-                        onChange={handleChange}  
-                        onFocus={handleFocus}
-                    />
-                    {errors.fullname && <p className="text-red-500 text-sm font-MarvelSans">{errors.fullname}</p>}
-                </div>
-    
-                {/* Поле: Целевая аудитория */}
-                <div className="mb-2">
-                    <label htmlFor="audience" className={labelClasses}>
-                        Целевая аудитория
-                    </label>
-                    <textarea
-                        id="audience"
-                        name="audience"
-                        placeholder="Определите основных пользователей"
-                        className={`${inputClasses} h-auto resize-none overflow-y-hidden`} // Убираем фиксированную высоту
-                        ref={textareaAudienceRef} // Привязываем реф к textarea целевой аудитории
-                        value={formData.audience}
-                        onChange={handleChange}
-                        onFocus={handleFocus} // Добавляем обработчик фокуса
-                    ></textarea>
-                </div>
-    
-                {/* Поле: Цели и задачи */}
-                <div className="mb-2">
+
+                 {/* Поле: Цели и задачи */}
+                 <div className="mb-1">
                     <label htmlFor="goals" className={labelClasses}>
                         Цели и задачи
                     </label>
@@ -162,6 +127,41 @@ const BriefForm = () => {
                     {errors.goals && <p className="text-red-500 text-sm">{errors.goals}</p>}
                 </div>
     
+                {/* Поле: Целевая аудитория */}
+                <div className="mb-1">
+                    <label htmlFor="audience" className={labelClasses}>
+                        Целевая аудитория
+                    </label>
+                    <textarea
+                        id="audience"
+                        name="audience"
+                        placeholder="Определите основных пользователей"
+                        className={`${inputClasses} h-auto resize-none overflow-y-hidden`} // Убираем фиксированную высоту
+                        ref={textareaAudienceRef} // Привязываем реф к textarea целевой аудитории
+                        value={formData.audience}
+                        onChange={handleChange}
+                        onFocus={handleFocus} // Добавляем обработчик фокуса
+                    ></textarea>
+                </div>
+
+                 {/* Поле: Автор идеи */}
+                    <div className="mb-1">
+                    <label htmlFor="fullname" className={labelClasses}>
+                        Автор идеи
+                    </label>
+                    <input 
+                        type="text" 
+                        id="fullname" 
+                        name="fullname" 
+                        placeholder="Укажите полное имя автора" 
+                        className={inputClasses} 
+                        value={formData.fullname} 
+                        onChange={handleChange}  
+                        onFocus={handleFocus}
+                    />
+                    {errors.fullname && <p className="text-red-500 text-sm font-MarvelSans">{errors.fullname}</p>}
+                </div>
+               
                 {/* Кнопка отправки */}
                 <button 
                     type="submit"
