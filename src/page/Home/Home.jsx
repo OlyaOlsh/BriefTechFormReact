@@ -13,7 +13,7 @@ const Home = () => {
         window.addEventListener('touchmove', preventScroll, { passive: false });
 
         // Прокручиваем страницу вверх при открытии компонента
-        window.scrollTo({ top: 500, behavior: 'smooth' });
+        window.scrollTo({ top: -100, behavior: 'smooth' });
 
         // Удаляем обработчик при размонтировании компонента
         return () => {
