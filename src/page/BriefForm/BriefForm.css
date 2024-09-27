@@ -4,6 +4,53 @@
 
 @import './../../fonts/fonts.css';
 
+
+
+.form-group {
+  margin-bottom: 0.5rem; /* Уменьшите значение, чтобы сократить расстояние между полями */
+}
+
+.form-group:last-child {
+  margin-bottom: 1.5rem; /* Оставьте больший отступ для кнопки отправки */
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem; /* Уменьшите размер шрифта метки */
+  font-weight: medium;
+  color: #0A1A5C; /* Задайте нужный цвет текста */
+  margin-bottom: 0.25rem; /* Уменьшите отступ снизу метки */
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.5rem 1rem; /* Уменьшите внутренние отступы полей */
+  border: 1px solid #D1D5DB; /* Измените цвет границы на более светлый */
+  border-radius: 0.375rem;
+  font-size: 0.875rem; /* Уменьшите размер шрифта полей */
+  font-family: 'MarvelSans-Regular', sans-serif; /* Укажите ваш шрифт */
+  resize: none; /* Отключите возможность изменения размера textarea */
+}
+
+.form-group textarea {
+  height: 100px; /* Установите желаемую высоту textarea */
+  overflow-y: auto; /* Включите вертикальную прокрутку */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0A1A5C; /* Измените цвет границы при фокусе на нужный */
+  box-shadow: 0 0 0 3px rgba(10, 26, 92, 0.2); /* Добавьте тень при фокусе */
+}
+
+.form-group .error-message {
+  color: #DC2626; /* Цвет текста для сообщений об ошибках */
+  font-size: 0.75rem; /* Уменьшите размер шрифта сообщений об ошибках */
+  margin-top: 0.25rem; /* Добавьте небольшой отступ сверху для сообщений об ошибках */
+}
+
 .custom-button {
     background-color: #0A1A5C; /* Зеленый цвет фона */
     color: #EEEEF0 ; /* Белый цвет текста */
@@ -26,28 +73,7 @@
     cursor: not-allowed; /* Курсор в виде запрещающего знака для неактивной кнопки */
   }
 
-.custom-header {
-    font-family: 'MarvelSans-Regular', sans-serif; /* Укажите ваш шрифт */
-    color:  #409BFF; /* Задайте нужный цвет */
-    text-align: center; /* Выравнивание по центру */
-    margin-bottom: 18px; /* Отступ снизу */
-    font-size: 28px;
-}
 
-input::placeholder, textarea::placeholder {
-    color: #5c545cb5; /* Задайте нужный цвет для placeholder */
-    font-family: 'MarvelSans-Regular', sans-serif; /* Укажите ваш шрифт */
-}
-.label-custom {
-    color: #0A1A5C; /* Задайте нужный цвет текста */
-    font-family: 'MarvelSans-Regular', sans-serif; /* Укажите ваш шрифт */
-    font-size: 16px; /* Увеличьте значение на желаемый размер */
-    font-weight: medium; /* Сохраняем средний вес шрифта */
-    margin-bottom: 0.5; /* Сохраняем отступ снизу */
-}
-textarea {
-  height: 100px; /* Установите желаемую высоту */
-  overflow-y: auto; /* Включите вертикальную прокрутку */
-}
+
 
 

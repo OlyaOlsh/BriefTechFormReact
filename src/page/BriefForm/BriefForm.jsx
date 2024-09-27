@@ -133,93 +133,94 @@ const BriefForm = () => {
     };
 
     const handleFocus = () => {
-       window.scrollTo({ top: window.scrollY - 300, behavior: 'smooth' }); // Прокручиваем страницу вверх при фокусе
+       window.scrollTo({ top: window.scrollY, behavior: 'smooth' }); // Прокручиваем страницу вверх при фокусе
     };
 
     return (
         <form onSubmit={handleSubmit} className="relative flex-grow">
-            <div className={containerClasses}>
-                <span className={'username'}>{tg.initDataUnsafe?.user?.userName}</span>
-                <h2 className="custom-header text-3xl font-bold">А это Идея!</h2>
-                {/* Поле: Название проекта */}
-                <div className="mb-1">
-                    <label htmlFor="project-name" className={labelClasses}>
-                        Название проекта
-                    </label>
-                    <input 
-                        type="text" 
-                        id="project-name" 
-                        name="projectName" 
-                        maxLength = "1000"
-                        placeholder="Укажите краткое название" 
-                        className={inputClasses} 
-                        value={formData.projectName} 
-                        onChange={handleChange} 
-                    />
-                    {errors.projectName && <p className="text-red-500 text-sm font-MarvelSans">{errors.projectName}</p>}
-                </div>
-                 {/* Поле: Цели и задачи */}
-                 <div className="mb-1">
-                    <label htmlFor="goals" className={labelClasses}>
-                        Цели и задачи
-                    </label>
-                    <textarea
-                        id="goals"
-                        name="goals"
-                        maxLength = "1000"
-                        placeholder="Опишите основные цели и конкретные задачи, которые решает данная функциональность"
-                        className={`${inputClasses} h-auto resize-none overflow-y-hidden`} // Убираем фиксированную высоту
-                        ref={textareaGoalsRef} // Привязываем реф к textarea
-                        value={formData.goals}
-                        onChange={handleChange}
-                        onFocus={handleFocus} // Добавляем обработчик фокуса
-                    ></textarea>
-                    {errors.goals && <p className="text-red-500 text-sm">{errors.goals}</p>}
-                </div>
-                {/* Поле: Целевая аудитория */}
-                <div className="mb-1">
-                    <label htmlFor="audience" className={labelClasses}>
-                        Целевая аудитория
-                    </label>
-                    <textarea
-                        id="audience"
-                        name="audience"
-                        maxLength = "1000"
-                        placeholder="Определите основных пользователей"
-                        className={`${inputClasses} h-auto resize-none overflow-y-hidden`} // Убираем фиксированную высоту
-                        ref={textareaAudienceRef} // Привязываем реф к textarea целевой аудитории
-                        value={formData.audience}
-                        onChange={handleChange}
-                        onFocus={handleFocus} // Добавляем обработчик фокуса
-                    ></textarea>
-                </div>
-                 {/* Поле: Автор идеи */}
-                    <div className="mb-1">
-                    <label htmlFor="fullname" className={labelClasses}>
-                        Автор идеи
-                    </label>
-                    <input 
-                        type="text" 
-                        id="fullname" 
-                        name="fullname" 
-                        placeholder="Укажите полное имя автора" 
-                        className={inputClasses} 
-                        value={formData.fullname} 
-                        onChange={handleChange}  
-                        onFocus={handleFocus}
-                    />
-                    {errors.fullname && <p className="text-red-500 text-sm font-MarvelSans">{errors.fullname}</p>}
-                </div>              
-                {/* Кнопка отправки */}
-                <button 
-                    type="submit"
-                    disabled={!formData.goals || !formData.fullname}
-                    className={`custom-button ${!formData.goals || !formData.fullname ? 'opacity-50' : ''}`}>
-                    {buttonText}
-                </button>
+        <div className={containerClasses}>
+            <span className={'username'}>{tg.initDataUnsafe?.user?.userName}</span>
+            
+            {/* Поле: Название проекта */}
+            <div className="form-group">
+                <label htmlFor="project-name" className={labelClasses}>
+                    Название проекта
+                </label>
+                <input 
+                    type="text" 
+                    id="project-name" 
+                    name="projectName" 
+                    maxLength="1000"
+                    placeholder="Укажите краткое название" 
+                    className={inputClasses} 
+                    value={formData.projectName} 
+                    onChange={handleChange} 
+                />
+                {errors.projectName && <p className="text-red-500 text-sm">{errors.projectName}</p>}
             </div>
-        </form>
-    );
+    
+            {/* Поле: Цели и задачи */}
+            <div className="form-group">
+                <label htmlFor="goals" className={labelClasses}>
+                    Цели и задачи
+                </label>
+                <textarea
+                    id="goals"
+                    name="goals"
+                    maxLength="1000"
+                    placeholder="Опишите основные цели и задачи"
+                    className={`${inputClasses} h-auto resize-none`} 
+                    ref={textareaGoalsRef}
+                    value={formData.goals}
+                    onChange={handleChange}
+                ></textarea>
+                {errors.goals && <p className="text-red-500 text-sm">{errors.goals}</p>}
+            </div>
+    
+            {/* Поле: Целевая аудитория */}
+            <div className="form-group">
+                <label htmlFor="audience" className={labelClasses}>
+                    Целевая аудитория
+                </label>
+                <textarea
+                    id="audience"
+                    name="audience"
+                    maxLength="1000"
+                    placeholder="Определите основных пользователей"
+                    className={`${inputClasses} h-auto resize-none`} 
+                    ref={textareaAudienceRef}
+                    value={formData.audience}
+                    onChange={handleChange}
+                ></textarea>
+            </div>
+    
+            {/* Поле: Автор идеи */}
+            <div className="form-group">
+                <label htmlFor="fullname" className={labelClasses}>
+                    Автор идеи
+                </label>
+                <input 
+                    type="text" 
+                    id="fullname" 
+                    name="fullname" 
+                    placeholder="Укажите полное имя автора" 
+                    className={inputClasses} 
+                    value={formData.fullname} 
+                    onChange={handleChange}  
+                />
+                {errors.fullname && <p className="text-red-500 text-sm">{errors.fullname}</p>}
+            </div>              
+    
+            {/* Кнопка отправки */}
+            <button 
+                type="submit"
+                disabled={!formData.goals || !formData.fullname}
+                className={`custom-button ${!formData.goals || !formData.fullname ? 'opacity-50' : ''}`}>
+                {buttonText}
+            </button>
+        </div>
+    </form>
+    )
 };
 
 export default BriefForm;
