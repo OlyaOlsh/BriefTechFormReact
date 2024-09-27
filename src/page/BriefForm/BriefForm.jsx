@@ -32,6 +32,8 @@ const BriefForm = () => {
         }
     };
 
+
+
     // Функция для динамического изменения высоты
     const autoGrow = (el) => {
         el.style.height = 'auto'; // Сбрасываем высоту
@@ -48,16 +50,48 @@ const BriefForm = () => {
             textareaAudienceRef.current.style.height = '160px'; // Установите желаемую начальную высоту для целевой аудитории
             autoGrow(textareaAudienceRef.current); // Применяем функцию авто-роста
         }
+            // Добавляем обработчики событий для ограничения символов
+            const goalsTextarea = textareaGoalsRef.current;
+
+            const handlePasteGoals = (event) => {
+                setTimeout(() => {
+                    if (goalsTextarea.value.length > 1000) {
+                        goalsTextarea.value = goalsTextarea.value.substring(0, 1000);
+                    }
+                }, 0);
+            };
+
+            const handleInputGoals = () => {
+                if (goalsTextarea.value.length > 1000) {
+                    goalsTextarea.value = goalsTextarea.value.substring(0, 1000);
+                }
+            };
+
+            goalsTextarea.addEventListener('input', handleInputGoals);
+            goalsTextarea.addEventListener('paste', handlePasteGoals);
+
+            return () => {
+                goalsTextarea.removeEventListener('input', handleInputGoals);
+                goalsTextarea.removeEventListener('paste', handlePasteGoals);
+            };
+
     }, []);
+
+
 
     const validateForm = () => {
         const newErrors = {};
         if (!formData.projectName) newErrors.projectName = "Название проекта обязательно.";
         if (!formData.goals) newErrors.goals = "Цели и задачи обязательны.";
+        if (formData.goals.length > 1000) newErrors.goals = "Цели и задачи не могут превышать 1000 символов.";
         if (!formData.fullname) newErrors.fullname = "ФИО обязательно.";
+        
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
+
+
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -101,6 +135,7 @@ const BriefForm = () => {
                         type="text" 
                         id="project-name" 
                         name="projectName" 
+                        maxlength = "1000"
                         placeholder="Укажите краткое название" 
                         className={inputClasses} 
                         value={formData.projectName} 
@@ -117,6 +152,7 @@ const BriefForm = () => {
                     <textarea
                         id="goals"
                         name="goals"
+                        maxlength = "1000"
                         placeholder="Опишите основные цели и конкретные задачи, которые решает данная функциональность"
                         className={`${inputClasses} h-auto resize-none overflow-y-hidden`} // Убираем фиксированную высоту
                         ref={textareaGoalsRef} // Привязываем реф к textarea
@@ -135,6 +171,7 @@ const BriefForm = () => {
                     <textarea
                         id="audience"
                         name="audience"
+                        maxlength = "1000"
                         placeholder="Определите основных пользователей"
                         className={`${inputClasses} h-auto resize-none overflow-y-hidden`} // Убираем фиксированную высоту
                         ref={textareaAudienceRef} // Привязываем реф к textarea целевой аудитории
