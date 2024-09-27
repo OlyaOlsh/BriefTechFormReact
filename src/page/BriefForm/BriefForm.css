@@ -42,4 +42,8 @@ input::placeholder, textarea::placeholder {
     color: #0A1A5C; /* Задайте нужный цвет текста */
     font-family: 'MarvelSans-Regular', sans-serif; /* Укажите ваш шрифт */
 }
+textarea {
+  height: 100px; /* Установите желаемую высоту */
+  overflow-y: auto; /* Включите вертикальную прокрутку */
+}
 
