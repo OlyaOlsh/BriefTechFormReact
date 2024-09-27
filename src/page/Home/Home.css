@@ -1,121 +1,98 @@
 /* Home.css */
 @import './../../fonts/fonts.css';
+
+/* Сброс стилей */
 * {
-   /* box-sizing: border-box;*/
-    margin: 0;
-    padding: 0;
+    box-sizing: border-box; /* Упрощает управление размерами элементов */
+    margin: 0; /* Убираем отступы */
+    padding: 0; /* Убираем внутренние отступы */
 }
 
-.fullscreen-container {
-    height: 100vh; /* Занимает всю высоту экрана */
-    display: flex;
-    flex-direction: column; /* Вертикальное расположение элементов */
-}
-
-.image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px; /* Установите желаемую высоту блока */
-    background-color: #f0f0f0; /* Фоновый цвет блока */
-    margin-bottom: 10px; /* Уменьшите отступ снизу для разделения от home-container */
-}
-
-.home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 210px); /* Вычитаем высоту image-container и отступ */
-    padding: 10px;
-    text-align: center;
-    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
-}
-
-h1 {
-    font-size: 2.0rem; /* Размер заголовка */
-    margin-bottom: 10px;
-    color: #409BFF; /* Цвет заголовка */
-    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
-}
-
-p {
-    font-size: 1.2rem; /* Размер текста */
-    margin-bottom: 15px;
-    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
-}
-
-
-.brief-button:hover {
-    background-color: #409BFF; /* Цвет кнопки при наведении */
-}
-.brief-button {
-    display: inline-block;
-    padding: 15px 30px; /* Отступы */
-    font-size: 16px; /* Размер шрифта */
-    color: white; /* Цвет текста */
-    background: linear-gradient(90deg,  #0A1A5C, #37a7ed); /* Градиентный фон */
-    border: none; /* Без рамки */
-    border-radius: 5px; /* Закругленные углы */
-    text-decoration: none; /* Убираем подчеркивание */
-    cursor: pointer; /* Указатель при наведении */
-    position: relative; /* Для абсолютного позиционирования псевдоэлемента */
-    overflow: hidden; /* Скрываем переполнение */
-    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
-}
-
-.brief-button::before {
-    content: '';
-    position: absolute;
-    top: -100%; /* Начальное положение выше кнопки */
-    left: -100%; /* Начальное положение слева от кнопки */
-    width: 300%; /* Ширина анимации больше кнопки */
-    height: 300%; /* Высота анимации больше кнопки */
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)); /* Полупрозрачный градиент */
-    animation: ripple 1.5s infinite; /* Анимация */
-}
-
-@keyframes ripple {
-    to {
-        top: 100%; /* Перемещение вниз */
-        left: 100%; /* Перемещение вправо */
-    }
-}
-
-.brief-button:hover {
-    background-position: right center; /* Положение градиента при наведении */
+/* Общие стили для html и body */
+html, body {
+    height: 100%; /* Устанавливаем высоту для html и body */
+    overflow: hidden; /* Запрещаем прокрутку страницы */
+    margin: 0; /* Убираем отступы */
 }
 
 
 
-
-
-
-.image-container {
+.image-container_idea {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 200px; /* Установите желаемую высоту блока */
-    background-color: #f0f0f0; /* Фоновый цвет блока */
+    background-color: #EEEEF0; /* Фоновый цвет блока */
     margin-bottom: 10px; /* Отступ снизу для разделения от списка идей */
     margin-top: 20px;
 }
 
-.image {
+.image_idea {
     max-width: 100%; /* Ограничение ширины изображения до 100% блока */
     max-height: 100%; /* Ограничение высоты изображения до 100% блока */
     object-fit: contain; /* Масштабирование изображения с сохранением пропорций */
 }
 
 
-/* Фиксированное позиционирование кнопки на мобильных устройствах */
+.fullscreen-container_idea {
+    height: 100vh; /* Занимает всю высоту экрана */
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение элементов */
+}
+
+
+
+/* Стили для контейнера с текстом */
+.home-container_idea {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Расположение текста в верхней части */
+    align-items: center;
+    padding: 10px; /* Стандартные отступы */
+    text-align: center; /* Центрирование текста */
+    overflow-y: auto; /* Прокрутка, если текст превышает высоту контейнера */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
+}
+
+/* Стили для заголовка h1 */
+h1 {
+    font-size: 1.5rem; /* Размер заголовка для мобильных устройств */
+    margin-bottom: 10px; /* Отступ снизу */
+    color: #0a1a5c; /* Цвет заголовка */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
+    font-weight: bold;
+}
+
+/* Стили для параграфов p */
+p {
+    font-size: 1rem; /* Размер текста для мобильных устройств */
+    margin-bottom: 10px; /* Отступ снизу между параграфами */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
+    color: #0a1a5c; 
+}
+
+/* Стили для кнопки "Составить Бриф" */
+.brief-button_idea {
+    position: fixed; /* Фиксированное позиционирование кнопки */
+    bottom: 20px; /* Отступ от низа экрана */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Сдвигаем влево на половину ширины кнопки */
+    padding: 15px 30px; /* Отступы кнопки */
+    font-size: 16px; /* Размер шрифта кнопки */
+    color: white; /* Цвет текста кнопки */
+    background: linear-gradient(90deg, #0A1A5C, #37a7ed); /* Градиентный фон кнопки */
+    border: none; /* Без рамки */
+    border-radius: 5px; /* Закругленные углы кнопки */
+    text-decoration: none; /* Убираем подчеркивание текста кнопки */
+    cursor: pointer; /* Указатель при наведении на кнопку */
+}
+
 @media (max-width: 768px) {
-    .brief-button {
-        position: fixed;
-        bottom: 20px; /* Отступ от низа экрана */
+    .brief-button_idea {
+        width: calc(100% - 40px); /* Ширина кнопки с учетом отступов на мобильных устройствах */
+        max-width: 400px; /* Максимальная ширина кнопки на мобильных устройствах */
+        bottom: 20px; /* Отступ от низа экрана на мобильных устройствах */
         left: 50%;
         transform: translateX(-50%);
-        width: calc(100% - 40px); /* Ширина кнопки с учетом отступов */
-        max-width: 400px; /* Максимальная ширина кнопки */
     }
 }
