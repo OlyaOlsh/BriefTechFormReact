@@ -23,6 +23,7 @@ body {
     padding: 20px;
     text-align: center;
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
+    margin-bottom: 10px; 
 }
 
 h1 {
@@ -38,21 +39,67 @@ p {
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
 }
 
-.brief-button {
-    display: inline-block;
-    background-color: #0A1A5C; /* Цвет кнопки */
-    color: white; /* Цвет текста кнопки */
-    padding: 15px 30px; /* Отступы кнопки */
-    border-radius: 5px; /* Закругленные углы */
-    text-decoration: none; /* Убираем подчеркивание */
-    font-size: 1.2rem; /* Размер текста кнопки */
-    transition: background-color 0.3s ease; /* Плавный переход цвета */
-    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
-}
-
 .brief-button:hover {
     background-color: #409BFF; /* Цвет кнопки при наведении */
 }
+.brief-button {
+    display: inline-block;
+    padding: 15px 30px; /* Отступы */
+    font-size: 16px; /* Размер шрифта */
+    color: white; /* Цвет текста */
+    background: linear-gradient(90deg,  #0A1A5C, #37a7ed); /* Градиентный фон */
+    border: none; /* Без рамки */
+    border-radius: 5px; /* Закругленные углы */
+    text-decoration: none; /* Убираем подчеркивание */
+    cursor: pointer; /* Указатель при наведении */
+    position: relative; /* Для абсолютного позиционирования псевдоэлемента */
+    overflow: hidden; /* Скрываем переполнение */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
+}
+
+.brief-button::before {
+    content: '';
+    position: absolute;
+    top: -100%; /* Начальное положение выше кнопки */
+    left: -100%; /* Начальное положение слева от кнопки */
+    width: 300%; /* Ширина анимации больше кнопки */
+    height: 300%; /* Высота анимации больше кнопки */
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)); /* Полупрозрачный градиент */
+    animation: ripple 1.5s infinite; /* Анимация */
+}
+
+@keyframes ripple {
+    to {
+        top: 100%; /* Перемещение вниз */
+        left: 100%; /* Перемещение вправо */
+    }
+}
+
+.brief-button:hover {
+    background-position: right center; /* Положение градиента при наведении */
+}
+
+
+
+
+
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Установите желаемую высоту блока */
+    background-color: #f0f0f0; /* Фоновый цвет блока */
+    margin-bottom: 20px; /* Отступ снизу для разделения от списка идей */
+    margin-top: 10px;
+}
+
+.image {
+    max-width: 100%; /* Ограничение ширины изображения до 100% блока */
+    max-height: 100%; /* Ограничение высоты изображения до 100% блока */
+    object-fit: contain; /* Масштабирование изображения с сохранением пропорций */
+}
+
 
 /* Фиксированное позиционирование кнопки на мобильных устройствах */
 @media (max-width: 768px) {
