@@ -1,0 +1,28 @@
+.idea-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.idea-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 300px; /* Ширина карточки */
+    transition: transform 0.2s;
+}
+
+.idea-card:hover {
+    transform: scale(1.05); /* Увеличение карточки при наведении */
+}
+
+.idea-card h3 {
+    margin-top: 0;
+}
+
+.idea-card p {
+    margin: 5px 0;
+}
