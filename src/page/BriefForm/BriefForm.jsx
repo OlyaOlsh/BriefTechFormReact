@@ -82,7 +82,7 @@ const BriefForm = () => {
     };
     const handleFocus = () => {
        // window.scrollTo({ top: 0, behavior: 'smooth' }); // Прокручиваем страницу вверх при фокусе
-        window.scrollTo({ top: window.scrollY - 250, behavior: 'smooth' });
+        window.scrollTo({ top: window.scrollY - 300, behavior: 'smooth' });
     };
 
     return (
@@ -91,7 +91,7 @@ const BriefForm = () => {
                 <span className={'username'}>{tg.initDataUnsafe?.user?.userName}</span>
                 <h2 className="custom-header text-3xl font-bold">А это Идея!</h2>
 
-                <div className="mb-4">
+                <div className="mb-2">
                     <label htmlFor="project-name" className={labelClasses}>
                         Название проекта
                     </label>
@@ -99,7 +99,7 @@ const BriefForm = () => {
                     {errors.projectName && <p className="text-red-500 text-sm font-MarvelSans">{errors.projectName}</p>}
                 </div>
                 
-                <div className="mb-4">
+                <div className="mb-2">
                     <label htmlFor="goals" className={labelClasses}>
                         Цели и задачи
                     </label>
@@ -116,7 +116,7 @@ const BriefForm = () => {
                     {errors.goals && <p className="text-red-500 text-sm">{errors.goals}</p>}
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-2">
                     <label htmlFor="audience" className={labelClasses}>
                         Целевая аудитория
                     </label>
@@ -135,7 +135,7 @@ const BriefForm = () => {
               
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-2">
                     <label htmlFor="fullname" className={labelClasses}>
                         Автор идеи
                     </label>
