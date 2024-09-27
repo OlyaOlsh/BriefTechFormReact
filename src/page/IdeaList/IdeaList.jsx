@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { db } from './../../../src/firebase.js';
 import { collection, getDocs, doc, updateDoc, getDoc } from 'firebase/firestore';
 import './IdeaList.css'; // Импортируйте стили
-import shareImage from './../../img/imgforLink1.png';
+
 
 const IdeaList = () => {
     const tg = window.Telegram?.WebApp;
@@ -49,13 +49,14 @@ const IdeaList = () => {
 
     const handleShare = () => {
         const shareUrl = window.location.href; // Получаем текущую ссылку
-       // const shareImage = imgforLink; // Замените на путь к вашей картинке
+        const shareImage = 'https://brief-tech-form-react.vercel.app/images/imgforLink.png';
 
         if (navigator.share) { // Проверяем поддержку API Share
             navigator.share({
-                title: 'Поделитесь этой идеей!',
                 url: shareUrl,
-                files: [new File([shareImage], 'share-image.png', { type: 'image/png' })] // Используйте файл изображения
+                title: 'Поделитесь этой идеей!',
+                image: shareImage,
+              
             })
             .then(() => console.log('Успешно поделились!'))
             .catch((error) => console.error('Ошибка при попытке поделиться:', error));
