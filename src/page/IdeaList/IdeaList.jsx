@@ -124,15 +124,18 @@ const IdeaList = () => {
                                 ))}
                                 <span className="vote-count">({idea.votes || 0})</span> {/* Отображение количества голосов */}
                             </div>
+ 
                         </div>
+                        
                     ))
                 )}
+
+                <button onClick={handleShare} className="share-button">
+                        Поделиться
+                </button>
             </div>
 
-            {/* Иконка поделиться */}
-            <button onClick={handleShare} className="share-button">
-                Поделиться
-            </button>
+
         </div>
     );
 };

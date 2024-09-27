@@ -22,17 +22,20 @@ body {
     min-height: 100vh; /* Минимальная высота экрана */
     padding: 20px;
     text-align: center;
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
 }
 
 h1 {
     font-size: 2.0rem; /* Размер заголовка */
     margin-bottom: 20px;
     color: #409BFF; /* Цвет заголовка */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
 }
 
 p {
     font-size: 1.2rem; /* Размер текста */
     margin-bottom: 15px;
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
 }
 
 .brief-button {
@@ -44,6 +47,7 @@ p {
     text-decoration: none; /* Убираем подчеркивание */
     font-size: 1.2rem; /* Размер текста кнопки */
     transition: background-color 0.3s ease; /* Плавный переход цвета */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
 }
 
 .brief-button:hover {

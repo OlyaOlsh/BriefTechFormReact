@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
-    
+
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
     font-size: 16px; /* Размер шрифта */
 }
@@ -57,6 +57,7 @@
 }
 .share-button {
     width: 100%; /* Занимает всю ширину */
+    display: block;
     background-color: #0A1A5C; /* Зеленый цвет */
     color: white; /* Белый текст */
     padding: 10px 20px; /* Отступы */
