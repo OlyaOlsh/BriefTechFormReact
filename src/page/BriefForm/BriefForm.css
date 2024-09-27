@@ -41,9 +41,13 @@ input::placeholder, textarea::placeholder {
 .label-custom {
     color: #0A1A5C; /* Задайте нужный цвет текста */
     font-family: 'MarvelSans-Regular', sans-serif; /* Укажите ваш шрифт */
+    font-size: 16px; /* Увеличьте значение на желаемый размер */
+    font-weight: medium; /* Сохраняем средний вес шрифта */
+    margin-bottom: 0.5; /* Сохраняем отступ снизу */
 }
 textarea {
   height: 100px; /* Установите желаемую высоту */
   overflow-y: auto; /* Включите вертикальную прокрутку */
 }
+
 
