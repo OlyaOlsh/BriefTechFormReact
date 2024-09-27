@@ -1,4 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
+//import './../../../src/firebase.js';
+import { db } from './../../../src/firebase.js';
+import { collection, addDoc } from 'firebase/firestore';
 import './BriefForm.css';
 
 const inputClasses = 'w-full px-4 py-2 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition duration-200 font-MarvelSans-Regular';
@@ -15,9 +18,9 @@ const BriefForm = () => {
     });
     
     const [errors, setErrors] = useState({});
-
     const textareaAudienceRef = useRef(null); // Реф для textarea целевой аудитории
     const textareaGoalsRef = useRef(null); // Реф для textarea целей
+    const [buttonText, setButtonText] = useState('Отправить'); // Состояние для текста кнопки
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -31,8 +34,6 @@ const BriefForm = () => {
             autoGrow(textareaAudienceRef.current);
         }
     };
-
-
 
     // Функция для динамического изменения высоты
     const autoGrow = (el) => {
@@ -76,9 +77,6 @@ const BriefForm = () => {
             };
 
     }, []);
-
-
-
     const validateForm = () => {
         const newErrors = {};
         if (!formData.projectName) newErrors.projectName = "Название проекта обязательно.";
@@ -89,31 +87,41 @@ const BriefForm = () => {
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
-
-
-
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (!validateForm()) return;
+        try {
+           // Отправка данных в Firestore
+            await addDoc(collection(db, 'IdeaTable'), {
+                projectName: formData.projectName,
+                goals: formData.goals,
+                audience: formData.audience,
+                fullname: formData.fullname,
+                });
+            
+                // Очищаем поля формы
+                setFormData({
+                projectName: '',
+                goals: '',
+                audience: '',
+                fullname: '',
+                });
+                
+                // Меняем текст на кнопке после успешной отправки
+                setButtonText('Отправлено!'); 
 
-        // Отправка данных
-        tg.sendData(JSON.stringify({
-            projectName: formData.projectName,
-            goals: formData.goals,
-            audience: formData.audience,
-            fullname: formData.fullname,
-        }));
+                // Вы можете добавить сообщение об успехе здесь
+                alert('Данные успешно отправлены!');
 
-        // Очищаем поля формы
-        setFormData({
-            projectName: '',
-            goals: '',
-            audience: '',
-            fullname: '',
-        });
-        
-        // Вы можете добавить сообщение об успехе здесь
+                // Возвращаем текст кнопки через некоторое время (например, 3 секунды)
+                setTimeout(() => {
+                    setButtonText('Отправить');
+                }, 3000);
+
+            } catch (error) {
+                console.error('Ошибка при сохранении данных:', error);
+                alert('Произошла ошибка при сохранении данных.');
+            }
     };
 
     const handleFocus = () => {
@@ -125,7 +133,6 @@ const BriefForm = () => {
             <div className={containerClasses}>
                 <span className={'username'}>{tg.initDataUnsafe?.user?.userName}</span>
                 <h2 className="custom-header text-3xl font-bold">А это Идея!</h2>
-    
                 {/* Поле: Название проекта */}
                 <div className="mb-1">
                     <label htmlFor="project-name" className={labelClasses}>
@@ -135,7 +142,7 @@ const BriefForm = () => {
                         type="text" 
                         id="project-name" 
                         name="projectName" 
-                        maxlength = "1000"
+                        maxLength = "1000"
                         placeholder="Укажите краткое название" 
                         className={inputClasses} 
                         value={formData.projectName} 
@@ -143,7 +150,6 @@ const BriefForm = () => {
                     />
                     {errors.projectName && <p className="text-red-500 text-sm font-MarvelSans">{errors.projectName}</p>}
                 </div>
-
                  {/* Поле: Цели и задачи */}
                  <div className="mb-1">
                     <label htmlFor="goals" className={labelClasses}>
@@ -152,7 +158,7 @@ const BriefForm = () => {
                     <textarea
                         id="goals"
                         name="goals"
-                        maxlength = "1000"
+                        maxLength = "1000"
                         placeholder="Опишите основные цели и конкретные задачи, которые решает данная функциональность"
                         className={`${inputClasses} h-auto resize-none overflow-y-hidden`} // Убираем фиксированную высоту
                         ref={textareaGoalsRef} // Привязываем реф к textarea
@@ -162,7 +168,6 @@ const BriefForm = () => {
                     ></textarea>
                     {errors.goals && <p className="text-red-500 text-sm">{errors.goals}</p>}
                 </div>
-    
                 {/* Поле: Целевая аудитория */}
                 <div className="mb-1">
                     <label htmlFor="audience" className={labelClasses}>
@@ -171,7 +176,7 @@ const BriefForm = () => {
                     <textarea
                         id="audience"
                         name="audience"
-                        maxlength = "1000"
+                        maxLength = "1000"
                         placeholder="Определите основных пользователей"
                         className={`${inputClasses} h-auto resize-none overflow-y-hidden`} // Убираем фиксированную высоту
                         ref={textareaAudienceRef} // Привязываем реф к textarea целевой аудитории
@@ -180,7 +185,6 @@ const BriefForm = () => {
                         onFocus={handleFocus} // Добавляем обработчик фокуса
                     ></textarea>
                 </div>
-
                  {/* Поле: Автор идеи */}
                     <div className="mb-1">
                     <label htmlFor="fullname" className={labelClasses}>
@@ -197,8 +201,7 @@ const BriefForm = () => {
                         onFocus={handleFocus}
                     />
                     {errors.fullname && <p className="text-red-500 text-sm font-MarvelSans">{errors.fullname}</p>}
-                </div>
-               
+                </div>              
                 {/* Кнопка отправки */}
                 <button 
                     type="submit"
