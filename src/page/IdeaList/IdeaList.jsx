@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { db } from './../../../src/firebase.js';
 import { collection, getDocs, doc, updateDoc, getDoc } from 'firebase/firestore';
 import './IdeaList.css'; // Импортируйте стили
-import imgLogo from './../../img/imgforLink.jpg';
+import shareImage from './../../img/imgforLink.jpg';
 
 const IdeaList = () => {
     const tg = window.Telegram?.WebApp;
@@ -49,13 +49,13 @@ const IdeaList = () => {
 
     const handleShare = () => {
         const shareUrl = window.location.href; // Получаем текущую ссылку
-        const shareImage = imgLogo; // Замените на путь к вашей картинке
+       // const shareImage = imgforLink; // Замените на путь к вашей картинке
 
         if (navigator.share) { // Проверяем поддержку API Share
             navigator.share({
                 title: 'Поделитесь этой идеей!',
                 url: shareUrl,
-                image: shareImage,
+                files: [new File([shareImage], 'share-image.jpg', { type: 'image/jpeg' })] // Используйте файл изображения
             })
             .then(() => console.log('Успешно поделились!'))
             .catch((error) => console.error('Ошибка при попытке поделиться:', error));
