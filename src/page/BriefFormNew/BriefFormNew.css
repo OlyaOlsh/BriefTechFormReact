@@ -18,3 +18,11 @@ textarea,
 button {
     font-family: 'MarvelSans-Regular', sans-serif; /* Примените шрифт к полям ввода и кнопкам */
 }
+.hi_userName
+{
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
+    font-size: 16px; /* Размер шрифта */ 
+    color: #0a1a5c;
+    text-align: left; 
+    font-weight: bold;
+}
