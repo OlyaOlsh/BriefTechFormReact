@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import './Home.css';
+import './HomeDel.css';
 import imageUrl from './../../img/imgforLinkIdeas.png';
 
 
-const Home = () => {
+const HomeDel = () => {
     const tg = window.Telegram?.WebApp;
 
     useEffect(() => {
@@ -45,4 +45,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HomeDel;

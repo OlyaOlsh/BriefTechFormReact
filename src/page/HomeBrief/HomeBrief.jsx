@@ -1,0 +1,49 @@
+import React, { useEffect } from 'react';
+import './HomeBrief.css';
+
+const buttonClasses = 'bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 px-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl font-MarvelSans-Regular';
+
+const Test = () => {
+
+    const tg = window.Telegram?.WebApp;
+
+    useEffect(() => {
+        const preventScroll = (e) => {
+            e.preventDefault(); // Предотвращаем стандартное поведение прокрутки
+        };
+
+        // Проверяем, открыта ли страница через Telegram
+        if (tg) {
+            tg.ready(); // Подготовка Telegram Web App
+            tg.expand(); // Разворачиваем страницу на весь экран
+        }
+
+        // Добавляем обработчик событий
+        window.addEventListener('touchmove', preventScroll, { passive: false });
+
+        // Прокручиваем страницу вверх при открытии компонента
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Удаляем обработчик при размонтировании компонента
+        return () => {
+            window.removeEventListener('touchmove', preventScroll);
+        };
+    }, [tg]);
+    
+  return (
+  <div className= "flex justify-center items-center h-screen absolute inset-0 bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] opacity-80 rounded-lg">
+   {/* <div className="flex justify-center items-center h-screen absolute inset-0 bg-gradient-to-r from-yellow-500 to-red-600 opacity-80 rounded-lg">*/}
+      <div className="text-center">
+        <p className="text-3xl font-bold text-white mb-4"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Ваши идеи — это ключ к преобразованиям!</p>
+        <p className="text-lg text-white mb-8" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Каждая идея для нас бесценна!</p>
+        <button className={` ${buttonClasses}`} href="/briefform" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>
+          Создать Бриф
+        </button>
+        <p className="text-sm text-white mt-4"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Бриф о разработке нового функционала</p>
+        <p className="text-sm text-white mt-4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>MS Dynamics AX</p>
+      </div>
+    </div>
+  );
+};
+
+export default Test;

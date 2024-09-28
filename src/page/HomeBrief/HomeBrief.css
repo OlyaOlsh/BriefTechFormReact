@@ -1,0 +1,9 @@
+@import './../../fonts/fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.shadow-custom {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Настройте параметры тени по своему усмотрению */
+}
