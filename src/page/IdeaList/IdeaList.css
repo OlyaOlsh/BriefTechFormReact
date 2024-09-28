@@ -1,28 +1,39 @@
 @import './../../fonts/fonts.css';
+
 .idea-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 20px;
 
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
     font-size: 16px; /* Размер шрифта */
+
+    padding: 20px; /* Отступы внутри контейнера */
+    margin: 0 15px; /* Отступы слева и справа */
+    overflow-y: auto; /* Добавьте это свойство */
 }
 .hi_userName
 {
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
     font-size: 16px; /* Размер шрифта */ 
 }
-
+.bold-text {
+    font-weight: bold; /* Устанавливаем жирный шрифт */
+    font-size: 18px;
+}
 .idea-card {
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 10px;
+
     padding: 20px;
-    width: 300px; /* Ширина карточки */
+
+    width: calc(100% - 30px); 
+   /* width: calc(300px - 20px);  Ширина карточки с учетом отступов */
     transition: transform 0.2s;
 
+    color: #0a1a5c; /* Цвет заголовка */
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
     font-size: 16px; /* Размер шрифта */
 }
@@ -62,17 +73,19 @@
     color: #555; /* Цвет текста для количества голосов */
 }
 .share-button {
-    width: 100%; /* Занимает всю ширину */
+   /* width: 100%;  Занимает всю ширину */
+    width: calc(100% - 30px); /* Занимает всю ширину с учетом отступов */
     display: block;
     background-color: #0A1A5C; /* Зеленый цвет */
     color: white; /* Белый текст */
     padding: 10px 20px; /* Отступы */
     border: none; /* Без рамки */
-    border-radius: 5px; /* Закругленные углы */
+    border-radius: 8px; /* Закругленные углы */
     cursor: pointer; /* Указатель при наведении */
-    margin-top: 20px; /* Отступ сверху */
+    /*margin-top: 20px;  Отступ сверху */
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
     font-size: 16px; /* Размер шрифта */
+    margin: 20px 15px; /* Отступы сверху и снизу 20px, слева и справа 15px */
 }
 
 .share-button:hover {
@@ -83,8 +96,10 @@
     justify-content: center;
     align-items: center;
     height: 200px; /* Установите желаемую высоту блока */
-    background-color: #f0f0f0; /* Фоновый цвет блока */
-    margin-bottom: 20px; /* Отступ снизу для разделения от списка идей */
+    background-color: #EEEEF0; /* Фоновый цвет блока */
+    margin: 20px 15px; /* Отступы сверху и снизу 20px, слева и справа 15px */
+   /* margin-bottom: 20px;  Отступ снизу для разделения от списка идей */
+    border-radius: 8px; /* Скругление углов */
     font-family: 'MarvelSans-Regular', sans-serif; /* Укажите ваш шрифт */
 }
 
@@ -92,4 +107,5 @@
     max-width: 100%; /* Ограничение ширины изображения до 100% блока */
     max-height: 100%; /* Ограничение высоты изображения до 100% блока */
     object-fit: contain; /* Масштабирование изображения с сохранением пропорций */
+    border-radius: 8px; /* Скругление углов */
 }

@@ -16,9 +16,9 @@ const IdeaList = () => {
     const tg = window.Telegram?.WebApp;
 
     useEffect(() => {
-        const preventScroll = (e) => {
-            e.preventDefault(); // Предотвращаем стандартное поведение прокрутки
-        };
+       /* const preventScroll = (e) => {
+           e.preventDefault(); // Предотвращаем стандартное поведение прокрутки
+        };*/
 
         // Проверяем, открыта ли страница через Telegram
         if (tg) {
@@ -27,7 +27,7 @@ const IdeaList = () => {
         }
 
         // Добавляем обработчик событий
-        window.addEventListener('touchmove', preventScroll, { passive: false });
+       // window.addEventListener('touchmove', preventScroll, { passive: false });
 
         // Прокручиваем страницу вверх при открытии компонента
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -66,7 +66,7 @@ const IdeaList = () => {
 
         // Удаляем обработчик при размонтировании компонента
         return () => {
-            window.removeEventListener('touchmove', preventScroll);
+           // window.removeEventListener('touchmove', preventScroll);
         };
 
     }, [tg]);
@@ -154,10 +154,10 @@ const IdeaList = () => {
                 ) : (
                     ideas.map(idea => (
                         <div key={idea.id} className="idea-card">
-                            <h3><strong>Проект: {idea.projectName}</strong></h3>
-                            <p><strong>Автор:</strong> {idea.fullname}</p>
-                            <p><strong>Цели:</strong> {idea.goals}</p>
-                            <p><strong>Для кого:</strong> {idea.audience}</p>
+                            <h3 className="bold-text">Проект: {idea.projectName}</h3>
+                            <p><span className="bold-text">Автор:</span> {idea.fullname}</p>
+                            <p><span className="bold-text">Цели:</span> {idea.goals}</p>
+                            <p><span className="bold-text">Для кого:</span> {idea.audience}</p>
                             <div className="rating">
                                 {[...Array(5)].map((_, index) => (
                                     <span
