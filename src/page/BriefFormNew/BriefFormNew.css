@@ -1,0 +1,20 @@
+@import './../../fonts/fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'MarvelSans-Regular', sans-serif; /* Установите ваш шрифт по умолчанию */
+}
+
+h2 {
+    text-align: left; /* Убедитесь, что заголовки выравнены по левому краю */
+    color: #0a1a5c
+}
+
+input,
+textarea,
+button {
+    font-family: 'MarvelSans-Regular', sans-serif; /* Примените шрифт к полям ввода и кнопкам */
+}

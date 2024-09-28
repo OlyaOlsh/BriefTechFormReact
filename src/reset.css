@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; /* Установите желаемый шрифт */
+}
+
+h2 {
+    text-align: left; /* Убедитесь, что заголовки выравнены по левому краю */
+}
