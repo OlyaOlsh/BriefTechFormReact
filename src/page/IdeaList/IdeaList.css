@@ -8,6 +8,11 @@
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
     font-size: 16px; /* Размер шрифта */
 }
+.hi_userName
+{
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
+    font-size: 16px; /* Размер шрифта */ 
+}
 
 .idea-card {
     background-color: #f9f9f9;

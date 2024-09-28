@@ -6,16 +6,42 @@ import './IdeaList.css'; // Импортируйте стили
 import imageUrl from './../../img/imgforLink.jpg';
 
 const IdeaList = () => {
-    const tg = window.Telegram?.WebApp;
+  
 
     const [ideas, setIdeas] = useState([]);
     const [loading, setLoading] = useState(true);
     const [userId, setUserId] = useState(null);
 
+
+    const tg = window.Telegram?.WebApp;
+
     useEffect(() => {
-        // Получаем userId из Telegram Web App или генерируем случайный userId
-        if (tg && tg.initDataUnsafe) {
-            setUserId(tg.initDataUnsafe.user.id);
+        const preventScroll = (e) => {
+            e.preventDefault(); // Предотвращаем стандартное поведение прокрутки
+        };
+
+        // Проверяем, открыта ли страница через Telegram
+        if (tg) {
+            tg.ready(); // Подготовка Telegram Web App
+            tg.expand(); // Разворачиваем страницу на весь экран
+        }
+
+        // Добавляем обработчик событий
+        window.addEventListener('touchmove', preventScroll, { passive: false });
+
+        // Прокручиваем страницу вверх при открытии компонента
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+         // Получаем userId из Telegram Web App или генерируем случайный userId
+         if (tg) {
+             if (tg.initDataUnsafe) {
+            setUserId(tg.initDataUnsafe?.user?.id);
+             }
+             else
+             {
+                // Генерируем случайный userId
+            setUserId(generateRandomId());
+             }
         } else {
             // Генерируем случайный userId
             setUserId(generateRandomId());
@@ -37,6 +63,12 @@ const IdeaList = () => {
         };
 
         fetchIdeas();
+
+        // Удаляем обработчик при размонтировании компонента
+        return () => {
+            window.removeEventListener('touchmove', preventScroll);
+        };
+
     }, [tg]);
 
     const generateRandomId = () => {
@@ -50,18 +82,23 @@ const IdeaList = () => {
     const handleShare = () => {
         const shareUrl = window.location.href; // Получаем текущую ссылку
         const shareImage = 'https://brief-tech-form-react.vercel.app/images/imgforLinkIdeas.png';
-
-        if (navigator.share) { // Проверяем поддержку API Share
+        const shareText = 'Посмотрите эту замечательную идею!'; // Текст сообщения
+        if (navigator.share) { 
             navigator.share({
                 url: shareUrl,
                 title: 'Поделитесь этой идеей!',
-                text: 'Посмотрите эту замечательную идею!',
+                text: shareText,
                 image: shareImage,
             })
             .then(() => console.log('Успешно поделились!'))
             .catch((error) => console.error('Ошибка при попытке поделиться:', error));
         } else {
-            alert('К сожалению, функция "Поделиться" не поддерживается в этом браузере.');
+                    // Формируем URL для обмена в Telegram
+                    const telegramShareUrl = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
+
+                    // Открываем ссылку в новой вкладке
+                    window.open(telegramShareUrl, '_blank');
+           // alert('К сожалению, функция "Поделиться" не поддерживается в этом браузере.');
         }
     };
 
@@ -100,11 +137,17 @@ const IdeaList = () => {
         }
     };
 
+    // Получаем имя пользователя из Telegram или устанавливаем общее приветствие
+    const userName = tg?.initDataUnsafe?.user?.userName || "Гость";
+
     return (
         <div>
             <div className="image-container">
             <img src={imageUrl} alt="Идея" className="image" />
            </div>
+            <div className="hi_userName">
+                Добро пожаловать, {userName}!
+            </div>
             <div className="idea-list">
                 {ideas.length === 0 ? (
                     <p>Нет идей для отображения.</p>
@@ -134,7 +177,7 @@ const IdeaList = () => {
                 )}
 
                 <button onClick={handleShare} className="share-button">
-                        Поделиться
+                    Поделиться в Telegram
                 </button>
             </div>
 
