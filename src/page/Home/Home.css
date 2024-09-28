@@ -11,7 +11,7 @@
 /* Общие стили для html и body */
 html, body {
     height: 100%; /* Устанавливаем высоту для html и body */
-    overflow: hidden; /* Запрещаем прокрутку страницы */
+   /* overflow: hidden; /* Запрещаем прокрутку страницы */
     margin: 0; /* Убираем отступы */
     background-color: #EEEEF0; /* Фоновый цвет блока */
 }
@@ -83,7 +83,7 @@ p {
     padding: 15px 30px; /* Отступы кнопки */
     font-size: 16px; /* Размер шрифта кнопки */
     color: white; /* Цвет текста кнопки */
-    background: linear-gradient(90deg, #0A1A5C, #37a7ed); /* Градиентный фон кнопки */
+    background: linear-gradient(90deg, #0D30AB, #37a7ed); /* Градиентный фон кнопки */
     border: none; /* Без рамки */
     border-radius: 5px; /* Закругленные углы кнопки */
     text-decoration: none; /* Убираем подчеркивание текста кнопки */

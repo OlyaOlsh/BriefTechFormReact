@@ -2,24 +2,32 @@ import React, { useEffect } from 'react';
 import './Home.css';
 import imageUrl from './../../img/imgforLinkIdeas.png';
 
+
 const Home = () => {
+    const tg = window.Telegram?.WebApp;
 
     useEffect(() => {
         const preventScroll = (e) => {
             e.preventDefault(); // Предотвращаем стандартное поведение прокрутки
         };
 
+        // Проверяем, открыта ли страница через Telegram
+        if (tg) {
+            tg.ready(); // Подготовка Telegram Web App
+            tg.expand(); // Разворачиваем страницу на весь экран
+        }
+
         // Добавляем обработчик событий
         window.addEventListener('touchmove', preventScroll, { passive: false });
 
         // Прокручиваем страницу вверх при открытии компонента
-        window.scrollTo({ top: -100, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
         // Удаляем обработчик при размонтировании компонента
         return () => {
             window.removeEventListener('touchmove', preventScroll);
         };
-    }, []);
+    }, [tg]);
 
     return (
         <div className="fullscreen-container_idea">

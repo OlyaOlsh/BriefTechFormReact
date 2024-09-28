@@ -49,7 +49,7 @@ const IdeaList = () => {
 
     const handleShare = () => {
         const shareUrl = window.location.href; // Получаем текущую ссылку
-        const shareImage = 'https://brief-tech-form-react.vercel.app/images/imgforLink.png';
+        const shareImage = 'https://brief-tech-form-react.vercel.app/images/imgforLinkIdeas.png';
 
         if (navigator.share) { // Проверяем поддержку API Share
             navigator.share({
