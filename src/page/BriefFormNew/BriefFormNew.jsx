@@ -6,7 +6,7 @@ import './../../../src/reset.css';
 import './BriefFormNew.css';
 
 const inputClasses = "w-full px-3 py-2 placeholder-input text-input bg-blue-100 rounded-lg mb-4 font-MarvelSans-Regular";
-const buttonClasses = 'bg-gradient-to-r from-blue-500 to-blue-700 text-white w-full py-3 px-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl font-MarvelSans-Regular';
+const buttonClasses = 'bg-gradient-to-r from-blue-500 to-blue-700 text-white w-full py-3 px-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl font-MarvelSans-Regular active:scale-95 active:shadow-inner'; // Добавлен эффект нажатия
 
 const BriefFormNew = () => {
     const tg = window.Telegram?.WebApp;
@@ -97,7 +97,7 @@ const BriefFormNew = () => {
         if (!formData.projectName) newErrors.projectName = "Название проекта обязательно.";
         if (!formData.goals) newErrors.goals = "Цели и задачи обязательны.";
         if (formData.goals.length > 1000) newErrors.goals = "Цели и задачи не могут превышать 1000 символов.";
-        if (!formData.fullname) newErrors.fullname = "ФИО обязательно.";
+        if (!formData.fullname) newErrors.fullname = "Автор идеи обязательно.";
         
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -133,7 +133,8 @@ const BriefFormNew = () => {
     };
 
     return (
-        <div className="bg-background text-primary-foreground p-4 rounded-lg shadow-lg">
+        <div className="bg-background text-primary-foreground p-4 rounded-lg shadow-lg flex flex-col h-screen justify-between">
+            <div className="flex-grow">
             <h2 className="text-lg font-bold mb-4">Название проекта</h2>
             <input 
                 type="text" 
@@ -173,7 +174,10 @@ const BriefFormNew = () => {
             {errors.projectName && <p className="text-red-500">{errors.projectName}</p>}
             {errors.goals && <p className="text-red-500">{errors.goals}</p>}
             {errors.fullname && <p className="text-red-500">{errors.fullname}</p>}
+            </div>
+            <div className="mb-4">
             <button className={buttonClasses} onClick={handleSubmit}>{buttonText}</button>
+            </div>
         </div>
     );
 };
