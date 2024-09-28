@@ -1,5 +1,9 @@
 @import './../../fonts/fonts.css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .idea-list {
     display: flex;
     flex-wrap: wrap;
@@ -8,31 +12,29 @@
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
     font-size: 16px; /* Размер шрифта */
 
-    padding: 20px; /* Отступы внутри контейнера */
-    margin: 0 15px; /* Отступы слева и справа */
+    padding: 5px; /* Отступы внутри контейнера */
+    margin: 0 5px; /* Отступы слева и справа */
     overflow-y: auto; /* Добавьте это свойство */
 }
-.hi_userName
-{
+
+.hi_userName {
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
     font-size: 16px; /* Размер шрифта */ 
 }
+
 .bold-text {
     font-weight: bold; /* Устанавливаем жирный шрифт */
     font-size: 18px;
 }
+
 .idea-card {
-    background-color: #f9f9f9;
+    background-color: rgba(249, 249, 249, 0.7); /* Полупрозрачный фон */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-
-    padding: 20px;
-
-    width: calc(100% - 30px); 
-   /* width: calc(300px - 20px);  Ширина карточки с учетом отступов */
+    margin: 0px;
+    padding: 5px;
+    width: calc(100% - 10px); /* Ширина карточки с учетом отступов */
     transition: transform 0.2s;
-
     color: #0a1a5c; /* Цвет заголовка */
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
     font-size: 16px; /* Размер шрифта */
@@ -64,7 +66,6 @@
 .rating {
     display: flex;
     align-items: center; /* Выравнивание по вертикали */
-   /* margin-top: 10px;*/
 }
 
 .vote-count {
@@ -72,8 +73,8 @@
     font-size: 16px; /* Размер шрифта для количества голосов */
     color: #555; /* Цвет текста для количества голосов */
 }
+
 .share-button {
-   /* width: 100%;  Занимает всю ширину */
     width: calc(100% - 30px); /* Занимает всю ширину с учетом отступов */
     display: block;
     background-color: #0A1A5C; /* Зеленый цвет */
@@ -82,30 +83,29 @@
     border: none; /* Без рамки */
     border-radius: 8px; /* Закругленные углы */
     cursor: pointer; /* Указатель при наведении */
-    /*margin-top: 20px;  Отступ сверху */
+    margin-top: 20px; /* Отступ сверху */
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
     font-size: 16px; /* Размер шрифта */
-    margin: 20px 15px; /* Отступы сверху и снизу 20px, слева и справа 15px */
 }
 
 .share-button:hover {
-    background-color:  #78C946; /* Более темный зеленый при наведении */
+   background-color: #78C946; /* Более темный зеленый при наведении */
 }
+
 .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px; /* Установите желаемую высоту блока */
-    background-color: #EEEEF0; /* Фоновый цвет блока */
-    margin: 20px 15px; /* Отступы сверху и снизу 20px, слева и справа 15px */
-   /* margin-bottom: 20px;  Отступ снизу для разделения от списка идей */
-    border-radius: 8px; /* Скругление углов */
-    font-family: 'MarvelSans-Regular', sans-serif; /* Укажите ваш шрифт */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 200px; 
+   background-color: #EEEEF0; 
+   margin: 20px 15px; 
+   border-radius: 8px; 
+   font-family: 'MarvelSans-Regular', sans-serif; 
 }
 
 .image {
-    max-width: 100%; /* Ограничение ширины изображения до 100% блока */
-    max-height: 100%; /* Ограничение высоты изображения до 100% блока */
-    object-fit: contain; /* Масштабирование изображения с сохранением пропорций */
-    border-radius: 8px; /* Скругление углов */
+   max-width: 100%; 
+   max-height: 100%; 
+   object-fit: contain; 
+   border-radius: 8px; 
 }

@@ -33,7 +33,7 @@ const Test = () => {
     }, [tg]);
     
   return (
-  <div className= "flex justify-center items-center h-screen absolute inset-0 bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] opacity-80 rounded-lg">
+  <div className= "flex justify-center items-center h-screen absolute inset-0 bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] opacity-80 rounded-lg p-6">
    {/* <div className="flex justify-center items-center h-screen absolute inset-0 bg-gradient-to-r from-yellow-500 to-red-600 opacity-80 rounded-lg">*/}
       <div className="text-center">
         <p className="text-3xl font-bold text-white mb-4 font-MarvelSans-Regular"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Ваши идеи — это ключ к преобразованиям!</p>
