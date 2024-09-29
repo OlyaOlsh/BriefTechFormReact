@@ -21,7 +21,7 @@ p strong {
     color: white; /* Цвет текста */
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш собственный шрифт */
     font-weight: bold; /* Жирный шрифт */
-    font-size: 1.5rem; /* Размер текста */
+    font-size: 1.2rem; /* Размер текста */
     margin-bottom: 1rem; /* Отступ снизу */
 }
 
@@ -55,7 +55,7 @@ p strong {
 }
 
 .card {
-    background-color: white;
+    background-color:  rgba(255, 255, 255, 0.8);
     border-radius: 8px;
     padding: 16px;
     margin-bottom: 32px;
@@ -77,6 +77,9 @@ p strong {
     border-radius: 8px; /* Закругление углов */
     cursor: pointer; /* Курсор при наведении */
     font-family: 'MarvelSans-Regular', sans-serif; 
+
+    font-weight: bold; /* Жирный шрифт для h3 */
+    font-size: 1.2rem; /* Увеличьте размер шрифта для заголовка */
 }
 
 .search-input {
