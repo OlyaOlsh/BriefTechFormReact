@@ -32,11 +32,11 @@ const BriefFormNew = () => {
             tg.expand();
         }
 
-        window.addEventListener('touchmove', preventScroll, { passive: false });
+      //  window.addEventListener('touchmove', preventScroll, { passive: false });
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         return () => {
-            window.removeEventListener('touchmove', preventScroll);
+           // window.removeEventListener('touchmove', preventScroll);
         };
     }, [tg]);
 
