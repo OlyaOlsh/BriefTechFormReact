@@ -44,6 +44,20 @@
    background-color: #78C946; /* Более темный зеленый при наведении */
 }
 
+.close-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #1DA1F2; /* Цвет кнопки */
+    color: white; /* Цвет текста */
+    padding: 10px 20px; /* Отступы */
+    border-radius: 8px; /* Закругление углов */
+    border: none; /* Убираем рамку */
+    cursor: pointer; /* Курсор при наведении */
+    font-size: 16px; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+}
+
 .idea-list {
     scrollbar-width: thin; /* Firefox */
 }
