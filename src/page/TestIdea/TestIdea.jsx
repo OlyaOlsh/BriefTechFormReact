@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from './../../../src/firebase.js';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc,getDoc } from 'firebase/firestore';
 import './../../../src/reset.css';
 import './TestIdea.css'; // Импортируйте стили
 
@@ -25,9 +25,7 @@ const TestIdea = () => {
         if (tg) {
             if (tg.initDataUnsafe) {
                 setUserId(tg.initDataUnsafe?.user?.id);
-
-                setUserName(tg.initDataUnsafe?.user?.first_name ||  tg.initDataUnsafe?.user?.username || "Гость"); // Используем username
-
+                setUserName(tg.initDataUnsafe?.user?.first_name || tg.initDataUnsafe?.user?.username || "Гость");
             } else {
                 setUserId(generateRandomId());
             }
@@ -63,19 +61,44 @@ const TestIdea = () => {
         return 'user_' + Math.random().toString(36).substr(2, 9);
     };
 
-    const handleShare = () => {
-        // Логика для обмена
-    };
-
     const handleRating = async (ideaId, rating) => {
-        // Логика для рейтинга
+        if (!userId) {
+            alert('Не удалось получить идентификатор пользователя.');
+            return;
+        }
+
+        try {
+            const ideaRef = doc(db, 'IdeaTable', ideaId);
+            const ideaDoc = await getDoc(ideaRef);
+            const ideaData = ideaDoc.data();
+
+            // Проверяем, проголосовал ли пользователь ранее
+            if (ideaData.voters && ideaData.voters.includes(userId)) {
+                alert('Вы уже проголосовали за эту идею.');
+                return;
+            }
+
+            // Обновление рейтинга и количества голосов в Firestore
+            await updateDoc(ideaRef, {
+                rating: (ideaData.rating || 0) + rating,
+                votes: (ideaData.votes || 0) + 1,
+                voters: ideaData.voters ? [...ideaData.voters, userId] : [userId] // Добавляем ID пользователя в массив
+            });
+
+            // Обновление состояния ideas
+            setIdeas(prevIdeas =>
+                prevIdeas.map(idea =>
+                    idea.id === ideaId ? { ...idea, rating: (ideaData.rating || 0) + rating, votes: (ideaData.votes || 0) + 1, voters: [...(ideaData.voters || []), userId] } : idea
+                )
+            );
+        } catch (error) {
+            console.error('Ошибка при обновлении рейтинга:', error);
+        }
     };
 
     if (loading) {
         return <div>Загрузка...</div>;
     }
-
-   // const userName = tg?.initDataUnsafe?.user?.userName || "Гость";
 
     // Фильтрация идей по поисковому запросу
     const filteredIdeas = ideas.filter(idea =>
@@ -85,9 +108,9 @@ const TestIdea = () => {
     return (
         <div className="text-center w-full h-screen bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] rounded-lg shadow-lg overflow-hidden">
             <div className="container">
-            <div className="hi_userName">
-                Добро пожаловать, {userNameСur}!
-            </div>
+                <div className="hi_userName">
+                    Добро пожаловать, {userNameСur}!
+                </div>
             </div>
             {/* Поле для поиска */}
             <input
