@@ -11,6 +11,21 @@ p strong {
     font-weight: bold; /* Жирный шрифт только для меток в p */
     font-size: 1.2rem; /* Увеличьте размер шрифта для меток */
 }
+
+.search-input {
+    width: 100%; /* Занимает всю ширину карточки */
+    max-width: 600px; /* Максимальная ширина для гармоничного вида */
+    padding: 10px; /* Отступы внутри поля */
+    border-radius: 8px; /* Закругленные углы */
+    border: 1px solid #ccc; /* Цвет рамки */
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень для глубины */
+    margin: 0 auto; /* Центрирование поля поиска */
+    font-size: 16px; /* Размер шрифта */
+
+    margin-bottom: 20px;
+}
+
 .page-container {
     height: 100vh; /* Высота на весь экран */
     overflow: hidden; /* Запрет прокрутки всей страницы */
@@ -49,4 +64,34 @@ p strong {
     border-radius: 8px; /* Закругление углов */
     cursor: pointer; /* Курсор при наведении */
     font-family: 'MarvelSans-Regular', sans-serif; 
+}
+
+.search-input {
+    width: calc(100% - 32px); /* Полная ширина с учетом отступов */
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.sort-options {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sort-button {
+    cursor: pointer;
+    color: white;
+}
+.star {
+    color: #ccc; /* Цвет неактивных звезд */
+    font-size: 24px; /* Размер звезд */
+    cursor: pointer; /* Курсор при наведении */
+}
+
+.star.active {
+    color: #ffd700; /* Цвет активных звезд */
+}
+
+.vote-count {
+    margin-left: 10px; /* Отступ между звездами и количеством голосов */
 }

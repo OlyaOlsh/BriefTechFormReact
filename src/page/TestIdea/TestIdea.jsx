@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { db } from './../../../src/firebase.js';
-import { collection, getDocs, doc, updateDoc, getDoc } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import './../../../src/reset.css';
 import './TestIdea.css'; // Импортируйте стили
+
 
 const TestIdea = () => {
     const [ideas, setIdeas] = useState([]);
     const [loading, setLoading] = useState(true);
     const [userId, setUserId] = useState(null);
+    const [userNameСur, setUserName] = useState("Гость");
+    const [searchQuery, setSearchQuery] = useState(''); // Состояние для поискового запроса
     const tg = window.Telegram?.WebApp;
 
     useEffect(() => {
         if (tg) {
             tg.ready();
-            tg.expand(); // Разворачиваем приложение на весь экран
+            tg.expand();
         }
 
-        // Получаем userId из Telegram Web App или генерируем случайный userId
         if (tg) {
             if (tg.initDataUnsafe) {
                 setUserId(tg.initDataUnsafe?.user?.id);
+
+                setUserName(tg.initDataUnsafe?.user?.username || "Гость"); // Используем username
+                console.log("User ID:", tg.initDataUnsafe?.user?.id);
+                console.log("User Name:", tg.initDataUnsafe?.user?.username || "Гость");
             } else {
                 setUserId(generateRandomId());
             }
@@ -43,86 +49,51 @@ const TestIdea = () => {
         };
 
         fetchIdeas();
-
     }, [tg]);
 
     const generateRandomId = () => {
-        return 'user_' + Math.random().toString(36).substr(2, 9); // Генерация случайного ID
+        return 'user_' + Math.random().toString(36).substr(2, 9);
     };
 
     const handleShare = () => {
-        const shareUrl = window.location.href; // Получаем текущую ссылку
-        const shareText = 'Посмотрите эту замечательную идею!'; // Текст сообщения
-        if (navigator.share) { 
-            navigator.share({
-                url: shareUrl,
-                title: 'Поделитесь этой идеей!',
-                text: shareText,
-            })
-            .then(() => console.log('Успешно поделились!'))
-            .catch((error) => console.error('Ошибка при попытке поделиться:', error));
-        } else {
-            // Формируем URL для обмена в Telegram
-            const telegramShareUrl = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
-
-            // Открываем ссылку в новой вкладке
-            window.open(telegramShareUrl, '_blank');
-        }
+        // Логика для обмена
     };
 
     const handleRating = async (ideaId, rating) => {
-        if (!userId) {
-            alert('Не удалось получить идентификатор пользователя.');
-            return;
-        }
-
-        try {
-            const ideaRef = doc(db, 'IdeaTable', ideaId);
-            const ideaDoc = await getDoc(ideaRef);
-            const ideaData = ideaDoc.data();
-
-            // Проверяем, проголосовал ли пользователь ранее
-            if (ideaData.voters && ideaData.voters.includes(userId)) {
-                alert('Вы уже проголосовали за эту идею.');
-                return;
-            }
-
-            // Обновление рейтинга и количества голосов в Firestore
-            await updateDoc(ideaRef, {
-                rating,
-                votes: (ideaData.votes || 0) + 1,
-                voters: ideaData.voters ? [...ideaData.voters, userId] : [userId] // Добавляем ID пользователя в массив
-            });
-
-            // Обновление состояния ideas
-            setIdeas(prevIdeas =>
-                prevIdeas.map(idea =>
-                    idea.id === ideaId ? { ...idea, rating, votes: (ideaData.votes || 0) + 1, voters: ideaData.voters ? [...ideaData.voters, userId] : [userId] } : idea
-                )
-            );
-        } catch (error) {
-            console.error('Ошибка при обновлении рейтинга:', error);
-        }
+        // Логика для рейтинга
     };
 
     if (loading) {
         return <div>Загрузка...</div>;
     }
 
-    // Получаем имя пользователя из Telegram или устанавливаем общее приветствие
-    const userName = tg?.initDataUnsafe?.user?.userName || "Гость";
+   // const userName = tg?.initDataUnsafe?.user?.userName || "Гость";
+
+    // Фильтрация идей по поисковому запросу
+    const filteredIdeas = ideas.filter(idea =>
+        idea.projectName && idea.projectName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
         <div className="text-center w-full h-screen bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] rounded-lg shadow-lg overflow-hidden">
             <div className="hi_userName text-white text-2xl mb-4">
-                Добро пожаловать, {userName}!
+                Добро пожаловать, {userNameСur} {userId}!
             </div>
             
-            <div className="card-list" style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 80px)', padding: '0 16px' }}>
-                {ideas.length === 0 ? (
+            {/* Поле для поиска */}
+            <input
+                type="text"
+                placeholder="Поиск по названию проекта"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="search-input mb-4" // Класс для стилей
+            />
+
+            <div className="card-list" style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 90px)', padding: '0 16px' }}>
+                {filteredIdeas.length === 0 ? (
                     <p className="text-white">Нет идей для отображения.</p>
                 ) : (
-                    ideas.map(idea => (
+                    filteredIdeas.map(idea => (
                         <div 
                             key={idea.id} 
                             className="card w-full p-4 rounded-lg shadow-md mb-4 bg-white bg-opacity-20 backdrop-filter backdrop-blur-md border border-gray-300"
@@ -141,15 +112,14 @@ const TestIdea = () => {
                                         &#9733; 
                                     </span>
                                 ))}
-                                <span className="vote-count text-white">({idea.votes || 0})</span> 
+                                <span className="vote-count #0a1a5c">({idea.votes || 0})</span> 
                             </div>
                         </div>
                     ))
                 )}
-                
-               {/* <button onClick={handleShare} className="fixed-button">Поделиться в Telegram</button>*/}
+                 <div style={{ height: '60px' }}></div>
                 <button className="fixed-button" onClick={() => tg.close()}>
-                Закрыть
+                    Закрыть
                 </button>
             </div>
         </div>
