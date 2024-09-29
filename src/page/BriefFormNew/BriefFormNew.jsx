@@ -32,11 +32,11 @@ const BriefFormNew = () => {
             tg.expand();
         }
 
-      //  window.addEventListener('touchmove', preventScroll, { passive: false });
+        window.addEventListener('touchmove', preventScroll, { passive: false });
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         return () => {
-           // window.removeEventListener('touchmove', preventScroll);
+            window.removeEventListener('touchmove', preventScroll);
         };
     }, [tg]);
 
@@ -135,11 +135,11 @@ const BriefFormNew = () => {
     const userName = tg?.initDataUnsafe?.user?.userName || "Гость";
 
     return (
-        <div className="bg-background text-primary-foreground p-4 rounded-lg shadow-lg flex flex-col h-screen justify-between">
-            <div className="hi_userName">
-                Добро пожаловать, {userName}!
-            </div>
-            <div className="flex-grow">
+        <div className="bg-background text-primary-foreground p-4 rounded-lg shadow-lg flex flex-col h-screen">
+        <div className="hi_userName">
+            Добро пожаловать, {userName}!
+        </div>
+        <div className="flex-grow overflow-y-auto" style={{ maxHeight: 'calc(100vh - 80px)' }}> {/* Установите максимальную высоту для прокрутки */}
             <h2 className="text-lg font-bold mb-4">Название проекта</h2>
             <input 
                 type="text" 
@@ -179,12 +179,12 @@ const BriefFormNew = () => {
             {errors.projectName && <p className="text-red-500">{errors.projectName}</p>}
             {errors.goals && <p className="text-red-500">{errors.goals}</p>}
             {errors.fullname && <p className="text-red-500">{errors.fullname}</p>}
-            </div>
-             {/* Фиксированная кнопка */}
-            <div className="fixed bottom-0 left-0 right-0 p-4 bg-background">
-            <button className={buttonClasses} onClick={handleSubmit}>{buttonText}</button>
-            </div>
         </div>
+        {/* Фиксированная кнопка */}
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-background">
+            <button className={buttonClasses} onClick={handleSubmit}>{buttonText}</button>
+        </div>
+    </div>
     );
 };
 
