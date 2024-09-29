@@ -56,7 +56,7 @@ const TestIdea = () => {
         return () => {
             document.body.style.overflow = 'auto';
         };
-        
+
     }, [tg]);
 
     const generateRandomId = () => {
@@ -126,7 +126,7 @@ const TestIdea = () => {
                         </div>
                     ))
                 )}
-                 <div style={{ height: '60px' }}></div>
+                 <div style={{ height: '200px' }}></div>
                 <button className="fixed-button" onClick={() => tg.close()}>
                     Закрыть
                 </button>
