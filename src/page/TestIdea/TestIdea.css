@@ -11,6 +11,19 @@ p strong {
     font-weight: bold; /* Жирный шрифт только для меток в p */
     font-size: 1.2rem; /* Увеличьте размер шрифта для меток */
 }
+.container {
+    display: flex; /* Используем Flexbox */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+    height: 10vh; /* Высота контейнера на весь экран */
+}
+.hi_userName {
+    color: white; /* Цвет текста */
+    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш собственный шрифт */
+    font-weight: bold; /* Жирный шрифт */
+    font-size: 2rem; /* Размер текста */
+    margin-bottom: 1rem; /* Отступ снизу */
+}
 
 .search-input {
     width: 100%; /* Занимает всю ширину карточки */
@@ -57,7 +70,7 @@ p strong {
     position: fixed;
     bottom: 10px; /* Фиксация внизу */
     left: 16px; /* Отступ слева */
-    background-color: #1DA1F2; /* Цвет кнопки */
+    background-color: #78C946; /* Цвет кнопки */
     color: white; /* Цвет текста */
     padding: 10px; /* Отступы */
     border: none; /* Убираем рамку */

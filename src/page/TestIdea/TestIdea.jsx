@@ -24,8 +24,7 @@ const TestIdea = () => {
                 setUserId(tg.initDataUnsafe?.user?.id);
 
                 setUserName(tg.initDataUnsafe?.user?.username || "Гость"); // Используем username
-                console.log("User ID:", tg.initDataUnsafe?.user?.id);
-                console.log("User Name:", tg.initDataUnsafe?.user?.username || "Гость");
+
             } else {
                 setUserId(generateRandomId());
             }
@@ -76,10 +75,11 @@ const TestIdea = () => {
 
     return (
         <div className="text-center w-full h-screen bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] rounded-lg shadow-lg overflow-hidden">
-            <div className="hi_userName text-white text-2xl mb-4">
-                Добро пожаловать, {userNameСur} {userId}!
+            <div className="container">
+            <div className="hi_userName">
+                Добро пожаловать, {userNameСur}!
             </div>
-            
+            </div>
             {/* Поле для поиска */}
             <input
                 type="text"
