@@ -24,7 +24,7 @@ const IdeaList = () => {
         }
 
         // Добавляем обработчик событий
-        window.addEventListener('touchmove', preventScroll, { passive: false });
+      //  window.addEventListener('touchmove', preventScroll, { passive: false });
 
         // Прокручиваем страницу вверх при открытии компонента
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -63,7 +63,7 @@ const IdeaList = () => {
 
         // Удаляем обработчик при размонтировании компонента
         return () => {
-            window.removeEventListener('touchmove', preventScroll);
+           // window.removeEventListener('touchmove', preventScroll);
         };
 
     }, [tg]);
@@ -145,7 +145,7 @@ const IdeaList = () => {
             <button style={{ position: 'fixed', bottom: '10px', right: '10px' }} onClick={() => tg.close()}>
                 Закрыть
             </button>
-            <div className="idea-list" style={{ overflowY: 'auto' }}>
+            <div className="idea-list" style={{ overflowY: 'auto' , maxHeight: '100vh'}}>
                 {ideas.length === 0 ? (
                     <p className="text-white">Нет идей для отображения.</p>
                 ) : (
