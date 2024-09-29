@@ -7,19 +7,15 @@ import './../../../src/reset.css';
 import './IdeaList.css'; // Импортируйте стили
 
 const IdeaList = () => {
-  
-
     const [ideas, setIdeas] = useState([]);
     const [loading, setLoading] = useState(true);
     const [userId, setUserId] = useState(null);
-
-
     const tg = window.Telegram?.WebApp;
 
     useEffect(() => {
-       /* const preventScroll = (e) => {
+        const preventScroll = (e) => {
            e.preventDefault(); // Предотвращаем стандартное поведение прокрутки
-        };*/
+        };
 
         // Проверяем, открыта ли страница через Telegram
         if (tg) {
@@ -28,7 +24,7 @@ const IdeaList = () => {
         }
 
         // Добавляем обработчик событий
-       // window.addEventListener('touchmove', preventScroll, { passive: false });
+        window.addEventListener('touchmove', preventScroll, { passive: false });
 
         // Прокручиваем страницу вверх при открытии компонента
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -142,48 +138,47 @@ const IdeaList = () => {
     const userName = tg?.initDataUnsafe?.user?.userName || "Гость";
 
     return (
-<div className="flex justify-center items-start h-screen absolute inset-0 bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] opacity-80 rounded-lg">
-    <div className="text-center w-full p-8"> {/* Добавлен padding для отступа от краев */}
-        <div className="hi_userName text-white text-2xl mb-4">
-            Добро пожаловать, {userName}!
-        </div>
-        <div className="idea-list">
-            {ideas.length === 0 ? (
-                <p className="text-white">Нет идей для отображения.</p>
-            ) : (
-                ideas.map(idea => (
-                    <div 
-                        key={idea.id} 
-                        className="idea-card bg-white bg-opacity-100 p-4 rounded-lg shadow-md mb-4" // Полупрозрачный фон
-                    >
-                        <h3 className="bold-text">Проект: {idea.projectName}</h3>
-                        <p><span className="bold-text">Автор:</span> {idea.fullname}</p>
-                        <p><span className="bold-text">Цели:</span> {idea.goals}</p>
-                        <p><span className="bold-text">Для кого:</span> {idea.audience}</p>
-                        <div className="rating">
-                            {[...Array(5)].map((_, index) => (
-                                <span
-                                    key={index}
-                                    className={`star ${index < Math.round(idea.rating || 0) ? 'active' : ''}`}
-                                    onClick={() => handleRating(idea.id, index + 1)}
-                                >
-                                    &#9733; {/* Звездочка */}
-                                </span>
-                            ))}
-                            <span className="vote-count">({idea.votes || 0})</span> {/* Отображение количества голосов */}
-                        </div>
+        <div className="text-center w-full p-8 bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] rounded-lg shadow-lg">
+    <div className="hi_userName text-white text-2xl mb-4">
+        Добро пожаловать, {userName}!
+    </div>
+    <button style={{ position: 'fixed', bottom: '10px', right: '10px' }} onClick={() => tg.close()}>
+        Закрыть
+    </button>
+    <div className="idea-list" style={{ overflowY: 'auto' }}>
+        {ideas.length === 0 ? (
+            <p className="text-white">Нет идей для отображения.</p>
+        ) : (
+            ideas.map(idea => (
+                <div 
+                    key={idea.id} 
+                    className="idea-card w-full p-4 rounded-lg shadow-md mb-4 bg-white bg-opacity-20 backdrop-filter backdrop-blur-md border border-gray-300"
+                >
+                    <h3 className="bold-text text-white">Проект: {idea.projectName}</h3>
+                    <p className="text-white"><span className="bold-text">Автор:</span> {idea.fullname}</p>
+                    <p className="text-white"><span className="bold-text">Цели:</span> {idea.goals}</p>
+                    <p className="text-white"><span className="bold-text">Для кого:</span> {idea.audience}</p>
+                    <div className="rating">
+                        {[...Array(5)].map((_, index) => (
+                            <span
+                                key={index}
+                                className={`star ${index < Math.round(idea.rating || 0) ? 'active' : ''}`}
+                                onClick={() => handleRating(idea.id, index + 1)}
+                            >
+                                &#9733; 
+                            </span>
+                        ))}
+                        <span className="vote-count text-white">({idea.votes || 0})</span> 
                     </div>
-                ))
-            )}
+                </div>
+            ))
+        )}
 
-            <button onClick={handleShare} className="share-button bg-blue-500 text-white py-2 px-4 rounded-lg mt-4">
-                Поделиться в Telegram
-            </button>
-        </div>
+        <button onClick={handleShare} className="share-button bg-blue-500 text-white py-2 px-4 rounded-lg mt-4">
+            Поделиться в Telegram
+        </button>
     </div>
 </div>
-      
-    );
-};
-
-export default IdeaList;
+    )
+}
+        export default IdeaList;

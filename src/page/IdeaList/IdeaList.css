@@ -4,54 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.idea-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
-    font-size: 16px; /* Размер шрифта */
-
-    padding: 5px; /* Отступы внутри контейнера */
-    margin: 0 5px; /* Отступы слева и справа */
-    overflow-y: auto; /* Добавьте это свойство */
-}
-
-.hi_userName {
-    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
-    font-size: 16px; /* Размер шрифта */ 
-}
-
-.bold-text {
-    font-weight: bold; /* Устанавливаем жирный шрифт */
-    font-size: 18px;
-}
-
-.idea-card {
-    background-color: rgba(249, 249, 249, 0.7); /* Полупрозрачный фон */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0px;
-    padding: 5px;
-    width: calc(100% - 10px); /* Ширина карточки с учетом отступов */
-    transition: transform 0.2s;
-    color: #0a1a5c; /* Цвет заголовка */
-    font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш шрифт */
-    font-size: 16px; /* Размер шрифта */
-}
-
-.idea-card:hover {
-    transform: scale(1.05); /* Увеличение карточки при наведении */
-}
-
-.idea-card h3 {
-    margin-top: 0;
-    font-size: 20px; /* Размер шрифта */
-}
-
-.idea-card p {
-    margin: 5px 0;
-}
 
 .star {
     color: #ccc;
@@ -92,20 +44,3 @@
    background-color: #78C946; /* Более темный зеленый при наведении */
 }
 
-.image-container {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 200px; 
-   background-color: #EEEEF0; 
-   margin: 20px 15px; 
-   border-radius: 8px; 
-   font-family: 'MarvelSans-Regular', sans-serif; 
-}
-
-.image {
-   max-width: 100%; 
-   max-height: 100%; 
-   object-fit: contain; 
-   border-radius: 8px; 
-}
