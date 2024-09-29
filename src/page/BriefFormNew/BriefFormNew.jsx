@@ -154,6 +154,13 @@ const BriefFormNew = () => {
             }
         }
     };
+    const handleFocus = () => {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+    };
+
 
     const audienceRef = useRef(null);
     const fullnameRef = useRef(null);
@@ -192,8 +199,8 @@ const BriefFormNew = () => {
                 type="text" 
                 name="audience" 
                 ref={audienceRef}
-                value={formData.audience} 
-                onChange={handleChange} 
+                value={formData.audience}  
+                onFocus={handleFocus} 
                 onKeyDown={(e) => handleKeyDown(e, fullnameRef)} // Переход на следующее поле
                 placeholder="Определите основных пользователей" 
                 className={inputClasses} 
@@ -216,7 +223,7 @@ const BriefFormNew = () => {
 
          {/* Фиксированная кнопка */}
          <div className="fixed bottom-0 left-0 right-0 p-4 bg-background">
-                <button ref={submitButtonRef} className={buttonClasses} onClick={() => console.log(formData)}>
+                <button ref={submitButtonRef} className={buttonClasses} nClick={handleSubmit}>
                     Отправить
                 </button>
          </div>
