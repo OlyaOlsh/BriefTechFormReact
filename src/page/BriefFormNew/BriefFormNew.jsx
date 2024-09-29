@@ -21,6 +21,7 @@ const BriefFormNew = () => {
     const textareaAudienceRef = useRef(null);
     const textareaGoalsRef = useRef(null);
     const [buttonText, setButtonText] = useState('Отправить');
+    const submitButtonRef = useRef(null); // Реф для кнопки
 
     useEffect(() => {
         const preventScroll = (e) => {
@@ -131,6 +132,19 @@ const BriefFormNew = () => {
             alert('Произошла ошибка при сохранении данных.');
         }
     };
+
+    const handleKeyDown = (e, nextRef) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Предотвращаем стандартное поведение Enter
+            if (nextRef && nextRef.current) {
+                nextRef.current.focus(); // Переводим фокус на следующее поле
+            }
+        }
+    };
+
+    const audienceRef = useRef(null);
+    const fullnameRef = useRef(null);
+
     // Получаем имя пользователя из Telegram или устанавливаем общее приветствие
     const userName = tg?.initDataUnsafe?.user?.userName || "Гость";
 
@@ -140,50 +154,63 @@ const BriefFormNew = () => {
             Добро пожаловать, {userName}!
         </div>
         <div className="flex-grow">
-        <h2 className="text-lg font-bold mb-4">Название проекта</h2>
-        <input 
-            type="text" 
-            name="projectName" 
-            value={formData.projectName} 
-            onChange={handleChange} 
-            placeholder="Укажите краткое название" 
-            className={inputClasses} 
-        />
-        <h2 className="text-lg font-bold mb-4">Цели и задачи</h2>
-        <textarea 
-            name="goals" 
-            ref={textareaGoalsRef} 
-            value={formData.goals} 
-            onChange={handleChange} 
-            placeholder="Опишите основные цели и задачи" 
-            className={inputClasses}
-        ></textarea>
-        <h2 className="text-lg font-bold mb-4">Целевая аудитория</h2>
-        <input 
-            type="text" 
-            name="audience" 
-            value={formData.audience} 
-            onChange={handleChange} 
-            placeholder="Определите основных пользователей" 
-            className={inputClasses} 
-        />
-        <h2 className="text-lg font-bold mb-4">Автор идеи</h2>
-        <input 
-            type="text" 
-            name="fullname" 
-            value={formData.fullname} 
-            onChange={handleChange} 
-            placeholder="Укажите полное имя автора" 
-            className={inputClasses} 
-        />
-        {errors.projectName && <p className="text-red-500">{errors.projectName}</p>}
-        {errors.goals && <p className="text-red-500">{errors.goals}</p>}
-        {errors.fullname && <p className="text-red-500">{errors.fullname}</p>}
+            <h2 className="text-lg font-bold mb-4">Название проекта</h2>
+            <input 
+                type="text" 
+                name="projectName" 
+                value={formData.projectName} 
+                onChange={handleChange} 
+                onKeyDown={(e) => handleKeyDown(e, textareaGoalsRef)} // Переход на текстовое поле
+                placeholder="Укажите краткое название" 
+                className={inputClasses} 
+            />
+            <h2 className="text-lg font-bold mb-4">Цели и задачи</h2> 
+            <textarea 
+                name="goals" 
+                ref={textareaGoalsRef} 
+                value={formData.goals} 
+                onChange={handleChange} 
+                onKeyDown={(e) => handleKeyDown(e, audienceRef)} // Переход на следующее поле
+                placeholder="Опишите основные цели и задачи" 
+                className={inputClasses}
+            ></textarea>
+            <h2 className="text-lg font-bold mb-4">Целевая аудитория</h2>
+            <input 
+                type="text" 
+                name="audience" 
+                ref={audienceRef}
+                value={formData.audience} 
+                onChange={handleChange} 
+                onKeyDown={(e) => handleKeyDown(e, fullnameRef)} // Переход на следующее поле
+                placeholder="Определите основных пользователей" 
+                className={inputClasses} 
+            />
+            <h2 className="text-lg font-bold mb-4">Автор идеи</h2>
+            <input 
+                type="text" 
+                name="fullname" 
+                ref={fullnameRef}
+                value={formData.fullname} 
+                onChange={handleChange} 
+                onKeyDown={(e) => handleKeyDown(e, submitButtonRef)} // Переход к кнопке
+                placeholder="Укажите полное имя автора" 
+                className={inputClasses} 
+            />
+            {errors.projectName && <p className="text-red-500">{errors.projectName}</p>}
+            {errors.goals && <p className="text-red-500">{errors.goals}</p>}
+            {errors.fullname && <p className="text-red-500">{errors.fullname}</p>}
         </div>
+
          {/* Фиксированная кнопка */}
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-background">
-        <button className={buttonClasses} onClick={handleSubmit}>{buttonText}</button>
-        </div>
+         <div className="fixed bottom-0 left-0 right-0 p-4 bg-background">
+                <button ref={submitButtonRef} className={buttonClasses} onClick={() => console.log(formData)}>
+                    Отправить
+                </button>
+         </div>
+        {/* Фиксированная кнопка */}
+       {/* <div className="fixed bottom-0 left-0 right-0 p-4 bg-background">
+            <button className={buttonClasses} onClick={handleSubmit}>{buttonText}</button>
+        </div>*/}
     </div>
 );
 };
