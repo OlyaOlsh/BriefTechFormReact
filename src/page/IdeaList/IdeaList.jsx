@@ -62,9 +62,9 @@ const IdeaList = () => {
         fetchIdeas();
 
         // Удаляем обработчик при размонтировании компонента
-      /*  return () => {
+        return () => {
             window.removeEventListener('touchmove', preventScroll);
-        };*/
+        };
 
     }, [tg]);
 
