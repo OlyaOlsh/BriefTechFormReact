@@ -58,7 +58,7 @@ const Test = () => {
 
         </Link>
         <p className="text-sm text-white mt-4"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Бриф о разработке нового функционала</p>
-        <p className="text-sm text-white mt-4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>{userNameСur}MS Dynamics AX</p>
+        <p className="text-sm text-white mt-4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>MS Dynamics AX</p>
       </div>
     </div>
   );

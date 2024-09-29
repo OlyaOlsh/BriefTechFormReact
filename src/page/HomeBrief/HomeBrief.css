@@ -10,22 +10,4 @@
 body, p {
     font-family: 'MarvelSans-Regular', sans-serif; /* Установите ваш шрифт по умолчанию */
 }
-@keyframes silver-thread {
-    0% {
-        background-position: 0%;
-    }
-    100% {
-        background-position: 100%;
-    }
-}
 
-.silver-text {
-    font-size: 1rem; /* Размер шрифта */
-    background: linear-gradient(90deg, #C0C0C0, #FFFFFF, #C0C0C0); /* Градиент для серебряной нити */
-    background-clip: text; /* Обрезаем фон по тексту */
-    -webkit-background-clip: text; /* Для поддержки в Safari */
-    color: transparent; /* Делаем текст прозрачным, чтобы видеть градиент */
-    animation: silver-thread 2s linear infinite; /* Анимация */
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5), 
-                 -1px -1px 2px rgba(192, 192, 192, 0.7); /* Эффект блеска */
-}

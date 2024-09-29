@@ -70,7 +70,7 @@ p strong {
     position: fixed;
     bottom: 10px; /* Фиксация внизу */
     left: 16px; /* Отступ слева */
-    background-color: #78C946; /* Цвет кнопки */
+    background-color: #0a1a5c; /* Цвет кнопки */
     color: white; /* Цвет текста */
     padding: 10px; /* Отступы */
     border: none; /* Убираем рамку */
