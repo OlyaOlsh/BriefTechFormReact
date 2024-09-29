@@ -133,11 +133,24 @@ const BriefFormNew = () => {
         }
     };
 
-    const handleKeyDown = (e, nextRef) => {
+  {/* const handleKeyDown = (e, nextRef) => {
         if (e.key === 'Enter') {
             e.preventDefault(); // Предотвращаем стандартное поведение Enter
             if (nextRef && nextRef.current) {
                 nextRef.current.focus(); // Переводим фокус на следующее поле
+            }
+        }
+    };*/}
+
+    const handleKeyDown = (e, nextRef) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Предотвращаем стандартное поведение Enter
+            if (nextRef && nextRef.current) {
+                nextRef.current.focus(); // Переводим фокус на кнопку
+                window.scrollTo({
+                    top: nextRef.current.offsetTop,
+                    behavior: 'smooth'
+                });
             }
         }
     };
