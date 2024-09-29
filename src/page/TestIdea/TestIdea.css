@@ -21,7 +21,7 @@ p strong {
     color: white; /* Цвет текста */
     font-family: 'MarvelSans-Regular', sans-serif; /* Используйте ваш собственный шрифт */
     font-weight: bold; /* Жирный шрифт */
-    font-size: 2rem; /* Размер текста */
+    font-size: 1.5rem; /* Размер текста */
     margin-bottom: 1rem; /* Отступ снизу */
 }
 

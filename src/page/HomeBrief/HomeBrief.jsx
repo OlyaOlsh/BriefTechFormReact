@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import './../../../src/reset.css';
 import './HomeBrief.css';
 import { Link } from 'react-router-dom';
 
-const buttonClasses = 'bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 px-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl font-MarvelSans-Regular';
+const buttonClasses = 'bg-gradient-to-r from-[#78C946] to-[#5A9A3A] text-white py-3 px-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl font-MarvelSans-Regular';
 
 const Test = () => {
+    const [userNameСur, setUserName] = useState("Гость");
 
     const tg = window.Telegram?.WebApp;
 
@@ -20,6 +22,15 @@ const Test = () => {
             tg.expand(); // Разворачиваем страницу на весь экран
         }
 
+        if (tg) {
+          if (tg.initDataUnsafe) {
+
+              setUserName(tg.initDataUnsafe?.user?.first_name || tg.initDataUnsafe?.user?.username || "Гость"); // Используем username
+
+          } 
+        } 
+        
+
         // Добавляем обработчик событий
         window.addEventListener('touchmove', preventScroll, { passive: false });
 
@@ -31,7 +42,7 @@ const Test = () => {
             window.removeEventListener('touchmove', preventScroll);
         };
     }, [tg]);
-    
+
   return (
   <div className= "flex justify-center items-center h-screen absolute inset-0 bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] opacity-80 rounded-lg p-6">
 
@@ -41,13 +52,13 @@ const Test = () => {
 
         {/* Используем Link для навигации */}
         <Link to= "/briefformnew">
-          <button className={buttonClasses} style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>
+          <button className={buttonClasses}  style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>
             Создать Бриф
           </button>
 
         </Link>
         <p className="text-sm text-white mt-4"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Бриф о разработке нового функционала</p>
-        <p className="text-sm text-white mt-4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>MS Dynamics AX</p>
+        <p className="text-sm text-white mt-4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>{userNameСur}MS Dynamics AX</p>
       </div>
     </div>
   );

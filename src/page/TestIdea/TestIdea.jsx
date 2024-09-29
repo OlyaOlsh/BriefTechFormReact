@@ -23,7 +23,7 @@ const TestIdea = () => {
             if (tg.initDataUnsafe) {
                 setUserId(tg.initDataUnsafe?.user?.id);
 
-                setUserName(tg.initDataUnsafe?.user?.username || "Гость"); // Используем username
+                setUserName(tg.initDataUnsafe?.user?.first_name ||  tg.initDataUnsafe?.user?.username || "Гость"); // Используем username
 
             } else {
                 setUserId(generateRandomId());
