@@ -62,9 +62,9 @@ const IdeaList = () => {
         fetchIdeas();
 
         // Удаляем обработчик при размонтировании компонента
-        return () => {
+      /*  return () => {
             window.removeEventListener('touchmove', preventScroll);
-        };
+        };*/
 
     }, [tg]);
 
@@ -145,7 +145,7 @@ const IdeaList = () => {
             <button style={{ position: 'fixed', bottom: '10px', right: '10px' }} onClick={() => tg.close()}>
                 Закрыть
             </button>
-            <div className="idea-list" style={{ overflowY: 'auto', maxHeight: '70vh' }}>
+            <div className="idea-list" style={{ overflowY: 'auto' }}>
                 {ideas.length === 0 ? (
                     <p className="text-white">Нет идей для отображения.</p>
                 ) : (
