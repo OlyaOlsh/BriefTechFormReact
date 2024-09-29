@@ -200,6 +200,7 @@ const BriefFormNew = () => {
                 name="audience" 
                 ref={audienceRef}
                 value={formData.audience}  
+                onChange={handleChange} 
                 onFocus={handleFocus} 
                 onKeyDown={(e) => handleKeyDown(e, fullnameRef)} // Переход на следующее поле
                 placeholder="Определите основных пользователей" 
@@ -223,7 +224,7 @@ const BriefFormNew = () => {
 
          {/* Фиксированная кнопка */}
          <div className="fixed bottom-0 left-0 right-0 p-4 bg-background">
-                <button ref={submitButtonRef} className={buttonClasses} nClick={handleSubmit}>
+                <button ref={submitButtonRef} className={buttonClasses} onClick={handleSubmit}>
                     Отправить
                 </button>
          </div>
