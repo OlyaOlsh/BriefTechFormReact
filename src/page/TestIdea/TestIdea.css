@@ -1,0 +1,34 @@
+.page-container {
+    height: 100vh; /* Высота на весь экран */
+    overflow: hidden; /* Запрет прокрутки всей страницы */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-list {
+    overflow-y: auto; /* Разрешение прокрутки только для этого контейнера */
+    flex-grow: 1; /* Заполнение доступного пространства */
+    padding: 16px; /* Отступы */
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px; /* Минимальный отступ между карточками */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fixed-button {
+    
+    width: calc(100% - 32px); /* По всей ширине карточек с учетом отступов */
+    position: fixed;
+    bottom: 10px; /* Фиксация внизу */
+    left: 16px; /* Отступ слева */
+    background-color: #1DA1F2; /* Цвет кнопки */
+    color: white; /* Цвет текста */
+    padding: 10px; /* Отступы */
+    border: none; /* Убираем рамку */
+    border-radius: 8px; /* Закругление углов */
+    cursor: pointer; /* Курсор при наведении */
+}

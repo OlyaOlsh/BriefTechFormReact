@@ -5,6 +5,7 @@ import './App.css';
 import IdeaList from './page/IdeaList/IdeaList';
 import HomeBrief from './page/HomeBrief/HomeBrief';
 import BriefFormNew from './page/BriefFormNew/BriefFormNew';
+import TestIdea from './page/TestIdea/TestIdea';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path ="/briefform" element = {<BriefForm/>}/>
           <Route path ="/ideaList" element = {<IdeaList/>}/>
           <Route path ="/briefformnew" element = {<BriefFormNew/>}/>
+          <Route path ="/testIdea" element = {<TestIdea/>}/>
           </Routes>
     </div>
   );
