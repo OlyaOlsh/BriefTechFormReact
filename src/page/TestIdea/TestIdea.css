@@ -1,3 +1,16 @@
+@import './../../fonts/fonts.css';
+body {
+    font-family: 'MarvelSans-Regular', sans-serif; /* Или 'Marvel' если используете Google Fonts */
+}
+h3 {
+    font-weight: bold; /* Жирный шрифт для h3 */
+    font-size: 1.5rem; /* Увеличьте размер шрифта для заголовка */
+}
+
+p strong {
+    font-weight: bold; /* Жирный шрифт только для меток в p */
+    font-size: 1.2rem; /* Увеличьте размер шрифта для меток */
+}
 .page-container {
     height: 100vh; /* Высота на весь экран */
     overflow: hidden; /* Запрет прокрутки всей страницы */
@@ -9,14 +22,18 @@
     overflow-y: auto; /* Разрешение прокрутки только для этого контейнера */
     flex-grow: 1; /* Заполнение доступного пространства */
     padding: 16px; /* Отступы */
+    font-family: 'MarvelSans-Regular', sans-serif; 
+    color: #0a1a5c;
 }
 
 .card {
     background-color: white;
     border-radius: 8px;
     padding: 16px;
-    margin-bottom: 16px; /* Минимальный отступ между карточками */
+    margin-bottom: 32px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'MarvelSans-Regular', sans-serif; 
+    color: #0a1a5c;
 }
 
 .fixed-button {
@@ -31,4 +48,5 @@
     border: none; /* Убираем рамку */
     border-radius: 8px; /* Закругление углов */
     cursor: pointer; /* Курсор при наведении */
+    font-family: 'MarvelSans-Regular', sans-serif; 
 }

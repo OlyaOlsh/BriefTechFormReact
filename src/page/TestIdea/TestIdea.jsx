@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { db } from './../../../src/firebase.js';
 import { collection, getDocs, doc, updateDoc, getDoc } from 'firebase/firestore';
-import './TestIdea.css'; // Импортируйте стили
 import './../../../src/reset.css';
+import './TestIdea.css'; // Импортируйте стили
 
 const TestIdea = () => {
     const [ideas, setIdeas] = useState([]);
@@ -118,7 +118,7 @@ const TestIdea = () => {
                 Добро пожаловать, {userName}!
             </div>
             
-            <div className="card-list" style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 150px)', padding: '0 16px' }}>
+            <div className="card-list" style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 80px)', padding: '0 16px' }}>
                 {ideas.length === 0 ? (
                     <p className="text-white">Нет идей для отображения.</p>
                 ) : (
@@ -147,7 +147,10 @@ const TestIdea = () => {
                     ))
                 )}
                 
-                <button onClick={handleShare} className="fixed-button">Поделиться в Telegram</button>
+               {/* <button onClick={handleShare} className="fixed-button">Поделиться в Telegram</button>*/}
+                <button className="fixed-button" onClick={() => tg.close()}>
+                Закрыть
+                </button>
             </div>
         </div>
     );
