@@ -180,7 +180,8 @@ const BriefFormNew = () => {
             {errors.goals && <p className="text-red-500">{errors.goals}</p>}
             {errors.fullname && <p className="text-red-500">{errors.fullname}</p>}
             </div>
-            <div className="mb-4">
+             {/* Фиксированная кнопка */}
+            <div className="fixed bottom-0 left-0 right-0 p-4 bg-background">
             <button className={buttonClasses} onClick={handleSubmit}>{buttonText}</button>
             </div>
         </div>

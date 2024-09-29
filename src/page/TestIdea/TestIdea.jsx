@@ -90,7 +90,10 @@ const TestIdea = () => {
                 prevIdeas.map(idea =>
                     idea.id === ideaId ? { ...idea, rating: (ideaData.rating || 0) + rating, votes: (ideaData.votes || 0) + 1, voters: [...(ideaData.voters || []), userId] } : idea
                 )
+               
             );
+             // Уведомление о голосовании
+             alert(`Вы проголосовали за идею "${ideaData.projectName}"!`);
         } catch (error) {
             console.error('Ошибка при обновлении рейтинга:', error);
         }
