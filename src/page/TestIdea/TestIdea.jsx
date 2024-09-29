@@ -19,6 +19,9 @@ const TestIdea = () => {
             tg.expand();
         }
 
+        // Запрет прокрутки страницы
+        document.body.style.overflow = 'hidden';
+
         if (tg) {
             if (tg.initDataUnsafe) {
                 setUserId(tg.initDataUnsafe?.user?.id);
@@ -48,6 +51,12 @@ const TestIdea = () => {
         };
 
         fetchIdeas();
+
+        // Восстановление прокрутки при размонтировании компонента
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+        
     }, [tg]);
 
     const generateRandomId = () => {
