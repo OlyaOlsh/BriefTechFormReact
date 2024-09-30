@@ -45,7 +45,7 @@ const Test = () => {
     }, [tg]);
 
   return (
-  <div className= "flex justify-center items-center h-screen absolute inset-0 bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] opacity-80 rounded-lg p-6">
+  <div className= "flex justify-center items-center h-screen absolute inset-0 bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] opacity-100 rounded-lg p-6">
 
       <div className="text-center">
       <img src={logo} alt="Логотип"  className="mb-4 mx-auto"  style={{ width: '200px', height: 'auto' }} />
