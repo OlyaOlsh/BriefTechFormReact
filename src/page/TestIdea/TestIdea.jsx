@@ -4,13 +4,15 @@ import { collection, getDocs, doc, updateDoc,getDoc } from 'firebase/firestore';
 import './../../../src/reset.css';
 import './TestIdea.css'; // Импортируйте стили
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 const TestIdea = () => {
     const [ideas, setIdeas] = useState([]);
     const [loading, setLoading] = useState(true);
     const [userId, setUserId] = useState(null);
     const [userNameСur, setUserName] = useState("Гость");
-    const [searchQuery, setSearchQuery] = useState(''); // Состояние для поискового запроса
+    const [searchQuery, setSearchQuery] = useState('');
     const tg = window.Telegram?.WebApp;
 
     useEffect(() => {
@@ -19,7 +21,6 @@ const TestIdea = () => {
             tg.expand();
         }
 
-        // Запрет прокрутки страницы
         document.body.style.overflow = 'hidden';
 
         if (tg) {
@@ -50,18 +51,16 @@ const TestIdea = () => {
 
         fetchIdeas();
 
-        // Восстановление прокрутки при размонтировании компонента
         return () => {
             document.body.style.overflow = 'auto';
         };
-
     }, [tg]);
 
     const generateRandomId = () => {
         return 'user_' + Math.random().toString(36).substr(2, 9);
     };
 
-    const handleRating = async (ideaId, rating) => {
+    const handleRating = async (ideaId) => {
         if (!userId) {
             alert('Не удалось получить идентификатор пользователя.');
             return;
@@ -72,28 +71,23 @@ const TestIdea = () => {
             const ideaDoc = await getDoc(ideaRef);
             const ideaData = ideaDoc.data();
 
-            // Проверяем, проголосовал ли пользователь ранее
             if (ideaData.voters && ideaData.voters.includes(userId)) {
                 alert('Вы уже проголосовали за эту идею.');
                 return;
             }
 
-            // Обновление рейтинга и количества голосов в Firestore
             await updateDoc(ideaRef, {
-                rating: (ideaData.rating || 0) + rating,
                 votes: (ideaData.votes || 0) + 1,
-                voters: ideaData.voters ? [...ideaData.voters, userId] : [userId] // Добавляем ID пользователя в массив
+                voters: ideaData.voters ? [...ideaData.voters, userId] : [userId]
             });
 
-            // Обновление состояния ideas
             setIdeas(prevIdeas =>
                 prevIdeas.map(idea =>
-                    idea.id === ideaId ? { ...idea, rating: (ideaData.rating || 0) + rating, votes: (ideaData.votes || 0) + 1, voters: [...(ideaData.voters || []), userId] } : idea
+                    idea.id === ideaId ? { ...idea, votes: (ideaData.votes || 0) + 1, voters: [...(ideaData.voters || []), userId] } : idea
                 )
-               
             );
-             // Уведомление о голосовании
-             alert(`Вы проголосовали за идею "${ideaData.projectName}"!`);
+
+            alert(`Вы проголосовали за идею "${ideaData.projectName}"!`);
         } catch (error) {
             console.error('Ошибка при обновлении рейтинга:', error);
         }
@@ -103,7 +97,6 @@ const TestIdea = () => {
         return <div>Загрузка...</div>;
     }
 
-    // Фильтрация идей по поисковому запросу
     const filteredIdeas = ideas.filter(idea =>
         idea.projectName && idea.projectName.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -115,13 +108,13 @@ const TestIdea = () => {
                     Добро пожаловать, {userNameСur}!
                 </div>
             </div>
-            {/* Поле для поиска */}
+            
             <input
                 type="text"
                 placeholder="Поиск по названию проекта"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="search-input mb-4" // Класс для стилей
+                className="search-input mb-4"
             />
 
             <div className="card-list" style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 90px)', padding: '0 16px' }}>
@@ -138,16 +131,12 @@ const TestIdea = () => {
                             <p><strong>Цели:</strong> {idea.goals}</p>
                             <p><strong>Для кого:</strong> {idea.audience}</p>
                             <div className="rating flex justify-center items-center">
-                                {[...Array(5)].map((_, index) => (
-                                    <span
-                                        key={index}
-                                        className={`star ${index < Math.round(idea.rating || 0) ? 'active' : ''}`}
-                                        onClick={() => handleRating(idea.id, index + 1)}
-                                    >
-                                        &#9733; 
-                                    </span>
-                                ))}
-                                <span className="vote-count #0a1a5c">({idea.votes || 0})</span> 
+                                <FontAwesomeIcon 
+                                    icon={faThumbsUp} 
+                                    onClick={() => handleRating(idea.id)} 
+                                    style={{ cursor: 'pointer', color: 'yellow', marginRight: '8px' }} 
+                                />
+                                <span className="vote-count" style={{ color: '#0a1a5c' }}>{idea.votes || 0}</span> 
                             </div>
                         </div>
                     ))
