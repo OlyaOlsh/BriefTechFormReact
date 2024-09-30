@@ -96,7 +96,7 @@ const BriefFormNew = () => {
 
     const validateForm = () => {
         const newErrors = {};
-        if (!formData.projectName) newErrors.projectName = "Название проекта обязательно.";
+        if (!formData.projectName) newErrors.projectName = "Идея обязательно.";
         if (!formData.goals) newErrors.goals = "Цели и задачи обязательны.";
         if (formData.goals.length > 1000) newErrors.goals = "Цели и задачи не могут превышать 1000 символов.";
         if (!formData.fullname) newErrors.fullname = "Автор идеи обязательно.";
