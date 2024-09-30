@@ -172,7 +172,7 @@ const BriefFormNew = () => {
     return (
         <div className="bg-background text-primary-foreground p-4 rounded-lg shadow-lg flex flex-col h-screen justify-between">
         <div className="flex-grow">
-            <h2 className="text-lg font-bold mb-4">Название проекта</h2>
+            <h2 className="text-lg font-bold mb-4">Идея</h2>
             <input 
                 type="text" 
                 name="projectName" 
@@ -189,10 +189,10 @@ const BriefFormNew = () => {
                 value={formData.goals} 
                 onChange={handleChange} 
                 onKeyDown={(e) => handleKeyDown(e, audienceRef)} // Переход на следующее поле
-                placeholder="Опишите основные цели и задачи" 
+                placeholder="Опишите кратко основные цели и задачи" 
                 className={inputClasses}
             ></textarea>
-            <h2 className="text-lg font-bold mb-4">Целевая аудитория</h2>
+            <h2 className="text-lg font-bold mb-4">Для кого</h2>
             <input 
                 type="text" 
                 name="audience" 
@@ -201,7 +201,7 @@ const BriefFormNew = () => {
                 onChange={handleChange} 
                 onFocus={handleFocus} 
                 onKeyDown={(e) => handleKeyDown(e, fullnameRef)} // Переход на следующее поле
-                placeholder="Определите основных пользователей" 
+                placeholder="Укажите для какого отдела" 
                 className={inputClasses} 
             />
             <h2 className="text-lg font-bold mb-4">Автор идеи</h2>
