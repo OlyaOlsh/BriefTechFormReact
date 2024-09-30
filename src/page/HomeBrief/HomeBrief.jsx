@@ -54,7 +54,7 @@ const Test = () => {
 
         {/* Используем Link для навигации */}
         <Link to= "/briefformnew">
-          <button className={buttonClasses}  style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>
+          <button className={buttonClasses}  style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', fontSize: '18px' }}>
             Создать Бриф
           </button>
 
