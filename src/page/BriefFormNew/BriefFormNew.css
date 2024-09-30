@@ -6,6 +6,8 @@
 
 body {
     font-family: 'MarvelSans-Regular', sans-serif; /* Установите ваш шрифт по умолчанию */
+    background-color: white; /* Установите белый фон для всей страницы */
+    color: #0a1a5c
 }
 
 h2 {

@@ -170,10 +170,7 @@ const BriefFormNew = () => {
     const userName = tg?.initDataUnsafe?.user?.userName || "Гость";
 
     return (
-        <div className="bg-white text-primary-foreground p-4 rounded-lg shadow-lg flex flex-col h-screen justify-between">
-        <div className="hi_userName">
-            Добро пожаловать!
-        </div>
+        <div className="bg-background text-primary-foreground p-4 rounded-lg shadow-lg flex flex-col h-screen justify-between">
         <div className="flex-grow">
             <h2 className="text-lg font-bold mb-4">Название проекта</h2>
             <input 
