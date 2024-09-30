@@ -53,7 +53,7 @@ const Test = () => {
         <p className="text-lg text-white mb-8" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' , fontSize: '18px' }}>Каждая идея для нас бесценна!</p>
 
         {/* Используем Link для навигации */}
-        <Link to= "/briefformnew">
+        <Link to= "/briefformnews">
           <button className={buttonClasses}  style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', fontSize: '18px' }}>
             Создать Бриф
           </button>
