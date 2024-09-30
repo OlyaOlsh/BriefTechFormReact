@@ -15,7 +15,7 @@ function App() {
         {/* <Route path ="/briefform" element = {<BriefForm/>}/>*/}
         {/*  <Route path ="/ideaList" element = {<TestIdea/>}/>*/}
           <Route path ="/briefformnews" element = {<BriefFormNew/>}/>
-          <Route path ="/testIdeanew" element = {<TestIdea/>}/>
+          <Route path ="/testideanew" element = {<TestIdea/>}/>
           </Routes>
     </div>
   );
