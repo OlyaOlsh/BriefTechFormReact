@@ -221,7 +221,7 @@ const BriefFormNew = () => {
         </div>
 
          {/* Фиксированная кнопка */}
-         <div className="fixed bottom-0 left-0 right-0 p-4 bg-background">
+         <div className="bg-background">
                 <button ref={submitButtonRef} className={buttonClasses} onClick={handleSubmit}>
                     Отправить
                 </button>
