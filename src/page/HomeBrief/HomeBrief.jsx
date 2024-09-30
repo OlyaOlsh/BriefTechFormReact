@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './../../../src/reset.css';
 import './HomeBrief.css';
 import { Link } from 'react-router-dom';
+import logo from './../../../src/img/briefLogo.png';
 
 const buttonClasses = 'bg-gradient-to-r from-[#78C946] to-[#5A9A3A] text-white py-3 px-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl font-MarvelSans-Regular';
 
@@ -47,6 +48,7 @@ const Test = () => {
   <div className= "flex justify-center items-center h-screen absolute inset-0 bg-gradient-to-r from-[#409BFF] to-[#0a1a5c] opacity-80 rounded-lg p-6">
 
       <div className="text-center">
+      <img src={logo} alt="Логотип"  className="mb-4 mx-auto"  style={{ width: '200px', height: 'auto' }} />
         <p className="text-3xl font-bold text-white mb-4 font-MarvelSans-Regular"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Ваши идеи — это ключ к преобразованиям!</p>
         <p className="text-lg text-white mb-8" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Каждая идея для нас бесценна!</p>
 

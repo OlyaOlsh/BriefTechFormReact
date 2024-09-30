@@ -5,6 +5,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import './../../../src/reset.css';
 import './BriefFormNew.css';
 
+
 const inputClasses = "w-full px-3 py-2 placeholder-input text-input bg-blue-100 rounded-lg mb-4 font-MarvelSans-Regular";
 const buttonClasses = 'bg-gradient-to-r from-blue-500 to-blue-700 text-white w-full py-3 px-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl font-MarvelSans-Regular active:scale-95 active:shadow-inner'; // Добавлен эффект нажатия
 
