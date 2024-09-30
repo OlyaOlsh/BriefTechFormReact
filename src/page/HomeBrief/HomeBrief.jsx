@@ -50,7 +50,7 @@ const Test = () => {
       <div className="text-center">
       <img src={logo} alt="Логотип"  className="mb-4 mx-auto"  style={{ width: '200px', height: 'auto' }} />
         <p className="text-3xl font-bold text-white mb-4 font-MarvelSans-Regular"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Ваши идеи — это ключ к преобразованиям!</p>
-        <p className="text-lg text-white mb-8" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Каждая идея для нас бесценна!</p>
+        <p className="text-lg text-white mb-8" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' , fontSize: '18px' }}>Каждая идея для нас бесценна!</p>
 
         {/* Используем Link для навигации */}
         <Link to= "/briefformnew">
@@ -59,8 +59,8 @@ const Test = () => {
           </button>
 
         </Link>
-        <p className="text-sm text-white mt-4"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Бриф о разработке нового функционала</p>
-        <p className="text-sm text-white mt-4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>MS Dynamics AX</p>
+        <p className="text-sm text-white mt-4"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' , fontSize: '18px' }}>Бриф о разработке нового функционала</p>
+        <p className="text-sm text-white mt-4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', fontSize: '18px' }}>MS Dynamics AX</p>
       </div>
     </div>
   );
