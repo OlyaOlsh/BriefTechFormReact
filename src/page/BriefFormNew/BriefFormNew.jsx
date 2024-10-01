@@ -19,6 +19,8 @@ const BriefFormNew = () => {
         goals: '',
         audience: '',
         fullname: '',
+        createdAt: new Date().toISOString(), // Обновляем дату и время на момент отправки
+        status: 'Создано' // Устанавливаем статус по умолчанию
     });
     
     const [errors, setErrors] = useState({});
@@ -128,11 +130,13 @@ const BriefFormNew = () => {
                  goals: '',
                  audience: '',
                  fullname: '',
+                 createdAt: new Date().toISOString(), // Текущая дата и время
+                 status: 'Создано' // Значение по умолчанию для статуса
              });
              
              setButtonText('Отправлено!');
              toast.success('Данные успешно отправлены!'); 
-             
+
             setTimeout(() => {
                 setButtonText('Отправить еще');
                 setIsSubmitting(false); // Возвращаем состояние кнопки обратно
