@@ -135,6 +135,8 @@ const TestIdea = () => {
                             <p><strong>Автор:</strong> {idea.fullname}</p>
                             <p><strong>Цели:</strong> {idea.goals}</p>
                             <p><strong>Для кого:</strong> {idea.audience}</p>
+                            <p><strong>Статус:</strong> {idea.status}</p>
+                            <p><strong>Дата создания:</strong> {new Date(idea.createdAt?.toDate()).toLocaleString()}</p>
                             <div className="rating flex justify-center items-center">
                                 <FontAwesomeIcon 
                                     icon={faThumbsUp} 
