@@ -7,6 +7,7 @@ import './BriefFormNew.css';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Timestamp } from 'firebase/firestore'; 
 
 
 const inputClasses = "w-full px-3 py-2 placeholder-input text-input bg-blue-100 rounded-lg mb-4 font-MarvelSans-Regular";
@@ -130,7 +131,6 @@ const BriefFormNew = () => {
                  goals: '',
                  audience: '',
                  fullname: '',
-                 createdAt: Timestamp.now(), // Текущая дата и время
                  status: 'Создано' // Значение по умолчанию для статуса
              });
              
