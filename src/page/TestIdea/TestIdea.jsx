@@ -116,7 +116,7 @@ const TestIdea = () => {
             
             <input
                 type="text"
-                placeholder="Поиск по названию проекта"
+                placeholder="Поиск по названию идеи"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="search-input mb-4"

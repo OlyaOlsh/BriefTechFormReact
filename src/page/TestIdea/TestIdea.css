@@ -68,7 +68,7 @@ p strong {
     
     width: calc(100% - 32px); /* По всей ширине карточек с учетом отступов */
     position: fixed;
-    bottom: 10px; /* Фиксация внизу */
+    bottom: 12 px; /* Фиксация внизу */
     left: 16px; /* Отступ слева */
     background-color: #0a1a5c; /* Цвет кнопки */
     color: white; /* Цвет текста */
