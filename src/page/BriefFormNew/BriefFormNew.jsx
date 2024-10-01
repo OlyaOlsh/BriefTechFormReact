@@ -108,45 +108,50 @@ const BriefFormNew = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+    
         if (!validateForm() || isSubmitting) return; // Проверяем валидность формы и состояние кнопки
-
+    
         setIsSubmitting(true); // Устанавливаем состояние на "нажата"
-
+    
         try {
             await addDoc(collection(db, 'IdeaTable'), formData);
-
-            tg.sendData(JSON.stringify(formData));
-            
-            setFormData({
-                projectName: '',
-                goals: '',
-                audience: '',
-                fullname: '',
-            });
-            
-            setButtonText('Отправлено!');
-
-
+    
+           
+    
             const message = 'Данные успешно отправлены!';
             if (tg) {
-                tg.sendData(JSON.stringify({ success: message }));
+                tg.sendData(JSON.stringify({ success: message })); // Отправляем сообщение об успехе
             } else {
                 alert(message);
             }
 
+
+             // Отправляем данные в Telegram
+             tg.sendData(JSON.stringify(formData));
+            
+             // Сбрасываем форму
+             setFormData({
+                 projectName: '',
+                 goals: '',
+                 audience: '',
+                 fullname: '',
+             });
+             
+             setButtonText('Отправлено!');
+             
+    
             setTimeout(() => {
                 setButtonText('Отправить еще');
                 setIsSubmitting(false); // Возвращаем состояние кнопки обратно
             }, 3000);
-
+    
         } catch (error) {
             console.error('Ошибка при сохранении данных:', error);
-            const message = 'Произошла ошибка при сохранении данных.';
+            const errorMessage = 'Произошла ошибка при сохранении данных.';
             if (tg) {
-                tg.sendData(JSON.stringify({ error: errorMessage }));
+                tg.sendData(JSON.stringify({ error: errorMessage })); // Отправляем сообщение об ошибке
             } else {
-                alert(message);
+                alert(errorMessage);
             }
             setIsSubmitting(false); // Возвращаем состояние кнопки обратно в случае ошибки
         }
