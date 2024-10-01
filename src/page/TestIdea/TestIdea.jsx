@@ -62,7 +62,12 @@ const TestIdea = () => {
 
     const handleRating = async (ideaId) => {
         if (!userId) {
-            alert('Не удалось получить идентификатор пользователя.');
+            const message = 'Не удалось получить идентификатор пользователя.';
+            if (window.Telegram) {
+                tg.sendData(message);
+            } else {
+                alert(message);
+            }
             return;
         }
 
@@ -72,7 +77,12 @@ const TestIdea = () => {
             const ideaData = ideaDoc.data();
 
             if (ideaData.voters && ideaData.voters.includes(userId)) {
-                alert('Вы уже проголосовали за эту идею.');
+                const message = 'Вы уже проголосовали за эту идею.';
+                if (window.Telegram) {
+                    tg.sendData(message);
+                } else {
+                    alert(message);
+                }
                 return;
             }
 
@@ -87,8 +97,20 @@ const TestIdea = () => {
                 )
             );
 
-            alert(`Вы проголосовали за идею "${ideaData.projectName}"!`);
+            const successMessage = `Вы проголосовали за идею "${ideaData.projectName}"!`;
+            if (window.Telegram) {
+                tg.sendData(successMessage);
+            } else {
+                alert(successMessage);
+            }
+        
         } catch (error) {
+            const errorMessage = 'Произошла ошибка при обновлении рейтинга.';
+            if (window.Telegram) {
+                tg.sendData(errorMessage);
+            } else {
+                alert(errorMessage);
+            }
             console.error('Ошибка при обновлении рейтинга:', error);
         }
     };

@@ -126,13 +126,15 @@ const BriefFormNew = () => {
             });
             
             setButtonText('Отправлено!');
+
+
+            const message = 'Данные успешно отправлены!';
             if (window.Telegram) {
-                tg.sendData('Данные успешно отправлены');
+                tg.sendData(message);
+            } else {
+                alert(message);
             }
-            else
-            {
-                alert('Данные успешно отправлены!');
-            }
+
             setTimeout(() => {
                 setButtonText('Отправить еще');
                 setIsSubmitting(false); // Возвращаем состояние кнопки обратно
@@ -140,12 +142,11 @@ const BriefFormNew = () => {
 
         } catch (error) {
             console.error('Ошибка при сохранении данных:', error);
+            const message = 'Произошла ошибка при сохранении данных.';
             if (window.Telegram) {
-                tg.sendData('Произошла ошибка при сохранении данных');
-            }
-            else
-            {
-                alert('Произошла ошибка при сохранении данных.');
+                tg.sendData(message);
+            } else {
+                alert(message);
             }
             setIsSubmitting(false); // Возвращаем состояние кнопки обратно в случае ошибки
         }
