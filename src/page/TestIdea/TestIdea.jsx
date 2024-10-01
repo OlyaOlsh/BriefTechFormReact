@@ -79,8 +79,8 @@ const TestIdea = () => {
 
             if (ideaData.voters && ideaData.voters.includes(userId)) {
                 const message = 'Вы уже проголосовали за эту идею.';
-                if (window.Telegram) {
-                    tg.sendData(JSON.stringify({ error: errorMessage }));
+                if (tg) {
+                    tg.sendData(JSON.stringify({ error: message }));
                 } else {
                     alert(message);
                 }
@@ -99,7 +99,7 @@ const TestIdea = () => {
             );
 
             const successMessage = `Вы проголосовали за идею "${ideaData.projectName}"!`;
-            if (window.Telegram) {
+            if (tg) {
                 tg.sendData(JSON.stringify({ success: successMessage }));
             } else {
                 alert(successMessage);
@@ -107,7 +107,7 @@ const TestIdea = () => {
         
         } catch (error) {
             const errorMessage = 'Произошла ошибка при обновлении рейтинга.';
-            if (window.Telegram) {
+            if (tg) {
                 tg.sendData(JSON.stringify({ error: errorMessage }));
             } else {
                 alert(errorMessage);

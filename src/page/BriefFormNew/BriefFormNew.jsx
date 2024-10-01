@@ -129,7 +129,7 @@ const BriefFormNew = () => {
 
 
             const message = 'Данные успешно отправлены!';
-            if (window.Telegram) {
+            if (tg) {
                 tg.sendData(JSON.stringify({ success: message }));
             } else {
                 alert(message);
@@ -143,7 +143,7 @@ const BriefFormNew = () => {
         } catch (error) {
             console.error('Ошибка при сохранении данных:', error);
             const message = 'Произошла ошибка при сохранении данных.';
-            if (window.Telegram) {
+            if (tg) {
                 tg.sendData(JSON.stringify({ error: errorMessage }));
             } else {
                 alert(message);
