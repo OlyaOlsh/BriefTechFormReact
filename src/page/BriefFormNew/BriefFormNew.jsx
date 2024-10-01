@@ -5,6 +5,9 @@ import { collection, addDoc } from 'firebase/firestore';
 import './../../../src/reset.css';
 import './BriefFormNew.css';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const inputClasses = "w-full px-3 py-2 placeholder-input text-input bg-blue-100 rounded-lg mb-4 font-MarvelSans-Regular";
 const buttonClasses = 'bg-gradient-to-r from-blue-500 to-blue-700 text-white w-full py-3 px-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl font-MarvelSans-Regular active:scale-95 active:shadow-inner';
@@ -115,16 +118,6 @@ const BriefFormNew = () => {
     
         try {
             await addDoc(collection(db, 'IdeaTable'), formData);
-    
-           
-    
-            const message = 'Данные успешно отправлены!';
-            if (tg) {
-                tg.sendData(JSON.stringify({ success: message })); // Отправляем сообщение об успехе
-            } else {
-                alert(message);
-            }
-
 
              // Отправляем данные в Telegram
              tg.sendData(JSON.stringify(formData));
@@ -138,8 +131,8 @@ const BriefFormNew = () => {
              });
              
              setButtonText('Отправлено!');
+             toast.success('Данные успешно отправлены!'); 
              
-    
             setTimeout(() => {
                 setButtonText('Отправить еще');
                 setIsSubmitting(false); // Возвращаем состояние кнопки обратно
@@ -147,12 +140,7 @@ const BriefFormNew = () => {
     
         } catch (error) {
             console.error('Ошибка при сохранении данных:', error);
-            const errorMessage = 'Произошла ошибка при сохранении данных.';
-            if (tg) {
-                tg.sendData(JSON.stringify({ error: errorMessage })); // Отправляем сообщение об ошибке
-            } else {
-                alert(errorMessage);
-            }
+            toast.error('Произошла ошибка при сохранении данных.');
             setIsSubmitting(false); // Возвращаем состояние кнопки обратно в случае ошибки
         }
     };
@@ -234,7 +222,9 @@ const BriefFormNew = () => {
                     {errors.goals && <p className="text-red-500">{errors.goals}</p>}
                     {errors.fullname && <p className="text-red-500">{errors.fullname}</p>}
                 </div>
-
+                <div>
+                <ToastContainer />
+                </div>
                 <button 
                     ref={submitButtonRef} 
                     className={`${buttonClasses} ${isSubmitting ? 'bg-[#78C946]' : ''}`} // Изменяем цвет при нажатии
