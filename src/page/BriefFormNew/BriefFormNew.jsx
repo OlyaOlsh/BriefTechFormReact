@@ -19,7 +19,7 @@ const BriefFormNew = () => {
         goals: '',
         audience: '',
         fullname: '',
-        createdAt: new Date().toISOString(), // Обновляем дату и время на момент отправки
+        createdAt: Timestamp.now(), // Обновляем дату и время на момент отправки
         status: 'Создано' // Устанавливаем статус по умолчанию
     });
     
@@ -130,7 +130,7 @@ const BriefFormNew = () => {
                  goals: '',
                  audience: '',
                  fullname: '',
-                 createdAt: new Date().toISOString(), // Текущая дата и время
+                 createdAt: Timestamp.now(), // Текущая дата и время
                  status: 'Создано' // Значение по умолчанию для статуса
              });
              
