@@ -7,6 +7,9 @@ import './TestIdea.css'; // Импортируйте стили
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const TestIdea = () => {
     const [ideas, setIdeas] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -63,12 +66,7 @@ const TestIdea = () => {
 
     const handleRating = async (ideaId) => {
         if (!userId) {
-            const message = 'Не удалось получить идентификатор пользователя.';
-            if (window.Telegram) {
-                tg.sendData(message);
-            } else {
-                alert(message);
-            }
+            toast.error('Не удалось получить идентификатор пользователя.');
             return;
         }
 
@@ -78,12 +76,7 @@ const TestIdea = () => {
             const ideaData = ideaDoc.data();
 
             if (ideaData.voters && ideaData.voters.includes(userId)) {
-                const message = 'Вы уже проголосовали за эту идею.';
-                if (tg) {
-                    tg.sendData(JSON.stringify({ error: message }));
-                } else {
-                    alert(message);
-                }
+                toast.error('Вы уже проголосовали за эту идею.');
                 return;
             }
 
@@ -97,22 +90,11 @@ const TestIdea = () => {
                     idea.id === ideaId ? { ...idea, votes: (ideaData.votes || 0) + 1, voters: [...(ideaData.voters || []), userId] } : idea
                 )
             );
-
-            const successMessage = `Вы проголосовали за идею "${ideaData.projectName}"!`;
-            if (tg) {
-                tg.sendData(JSON.stringify({ success: successMessage }));
-            } else {
-                alert(successMessage);
-            }
+            toast.success(`Вы проголосовали за идею "${ideaData.projectName}"!`); 
         
         } catch (error) {
-            const errorMessage = 'Произошла ошибка при обновлении рейтинга.';
-            if (tg) {
-                tg.sendData(JSON.stringify({ error: errorMessage }));
-            } else {
-                alert(errorMessage);
-            }
-            console.error('Ошибка при обновлении рейтинга:', error);
+           toast.error('Произошла ошибка при обновлении рейтинга.');
+           console.error('Ошибка при обновлении рейтинга:', error);
         }
     };
 
@@ -164,6 +146,9 @@ const TestIdea = () => {
                         </div>
                     ))
                 )}
+                <div>
+                <ToastContainer />
+                </div>
                  <div style={{ height: '200px' }}></div>
                 <button className="fixed-button" onClick={() => tg.close()}>
                     Закрыть
